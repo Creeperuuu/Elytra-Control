@@ -13,10 +13,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Environment(EnvType.CLIENT)
 @Mixin(PlayerEntity.class)
 public class PlayerEntityMixin {
-    @Inject(method = "checkGliding", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "checkFallFlying", at = @At("HEAD"), cancellable = true)
     private void injectCheckFallFlying(CallbackInfoReturnable<Boolean> cir) {
         PlayerEntity player = (PlayerEntity) (Object) this;
-        if (player.isSneaking() || player.isGliding()){
+        if (player.isSneaking() || player.isFallFlying()){
             return;
         }
         double offset = 4.0 / 6.0;

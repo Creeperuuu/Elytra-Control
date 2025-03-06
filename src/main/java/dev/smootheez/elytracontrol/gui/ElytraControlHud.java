@@ -9,8 +9,6 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.RenderTickCounter;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
@@ -21,7 +19,7 @@ public class ElytraControlHud implements HudRenderCallback {
     private final Text elytraLockNotifier = Text.translatable("notifier." + Constants.MOD_ID + ".toggleElytraLock");
 
     @Override
-    public void onHudRender(DrawContext drawContext, RenderTickCounter renderTickCounter) {
+    public void onHudRender(DrawContext drawContext, float v) {
         if (!EndTickEvent.elytraToggle) {
             lockIconMode(drawContext, ElytraControlConfig.getInstance().getLockIconMode().getValue());
         }
@@ -35,7 +33,7 @@ public class ElytraControlHud implements HudRenderCallback {
 
         switch (lockIconMode) {
             case ICON_ONLY:
-                drawContext.drawTexture(RenderLayer::getGuiTextured, elytraLockTexture,
+                drawContext.drawTexture(elytraLockTexture,
                         baseX, baseY, 0, 0, iconSize, iconSize, iconSize, iconSize);
                 break;
             case TEXT_ONLY:
@@ -43,7 +41,7 @@ public class ElytraControlHud implements HudRenderCallback {
                         baseX, baseY + (iconSize - client.textRenderer.fontHeight), 0xFF1313, false);
                 break;
             case ICON_TEXT:
-                drawContext.drawTexture(RenderLayer::getGuiTextured, elytraLockTexture,
+                drawContext.drawTexture(elytraLockTexture,
                         baseX, baseY, 0, 0, iconSize, iconSize, iconSize, iconSize);
 
                 drawContext.drawText(client.textRenderer, elytraLockNotifier,

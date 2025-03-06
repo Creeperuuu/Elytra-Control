@@ -47,7 +47,7 @@ public class EasyFlightHandler {
 
         boolean isWearingElytra = client.player.getEquippedStack(EquipmentSlot.CHEST).getItem() == Items.ELYTRA;
         return EndTickEvent.elytraToggle && ElytraControlConfig.getInstance().getEasyFlight().getValue()
-                && !client.player.isGliding() && client.player.isOnGround()
+                && !client.player.isFallFlying() && client.player.isOnGround()
                 && isHoldingFirework(client.player) && isWearingElytra
                 && isCrosshairClear(client) && !client.interactionManager.getCurrentGameMode().isCreative()
                 && EndTickEvent.easyFlightToggle && !client.player.isTouchingWater();
@@ -128,7 +128,7 @@ public class EasyFlightHandler {
 
         ItemStack itemStack = client.player.getStackInHand(client.player.getActiveHand());
 
-        ActionResult actionResult = itemStack.use(client.world, client.player, client.player.getActiveHand());
+        ActionResult actionResult = itemStack.use(client.world, client.player, client.player.getActiveHand()).getResult();
 
         boolean isUsingItem = actionResult.isAccepted();
         boolean isSwingingHand = client.player.handSwinging;

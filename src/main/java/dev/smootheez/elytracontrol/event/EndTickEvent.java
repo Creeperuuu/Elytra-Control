@@ -1,6 +1,7 @@
 package dev.smootheez.elytracontrol.event;
 
-import dev.smootheez.elytracontrol.handler.AutoFlightHandler;
+import dev.smootheez.elytracontrol.Constants;
+import dev.smootheez.elytracontrol.config.ElytraControlConfig;
 import dev.smootheez.elytracontrol.handler.EasyFlightHandler;
 import dev.smootheez.elytracontrol.registry.KeyBinds;
 import net.fabricmc.api.EnvType;
@@ -13,8 +14,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.packet.c2s.play.ClientCommandC2SPacket;
 import net.minecraft.screen.ScreenTexts;
 import net.minecraft.text.Text;
-import dev.smootheez.elytracontrol.Constants;
-import dev.smootheez.elytracontrol.config.ElytraControlConfig;
 
 import java.util.Random;
 
@@ -35,7 +34,7 @@ public class EndTickEvent implements ClientTickEvents.EndTick {
 
         int randomNumber = random.nextInt(3) + 1;
         KeyBinding keyJump = client.options.jumpKey;
-        boolean fallFlyingEntity = player.isGliding();
+        boolean fallFlyingEntity = player.isFallFlying();
 
         if (playerUUID == null) {
             playerUUID = player.getUuidAsString();
@@ -51,7 +50,6 @@ public class EndTickEvent implements ClientTickEvents.EndTick {
         updateElytraFlyingTime(client);
 
         EasyFlightHandler.handleEasyFlight(client);
-        AutoFlightHandler.autoFlight(client);
 
     }
 
@@ -72,14 +70,14 @@ public class EndTickEvent implements ClientTickEvents.EndTick {
     }
 
     private void stopFlying(ClientPlayerEntity player) {
-        player.stopGliding();
+        player.stopFallFlying();
         player.networkHandler.sendPacket(new ClientCommandC2SPacket(player, ClientCommandC2SPacket.Mode.START_FALL_FLYING));
     }
 
     private void updateElytraFlyingTime(MinecraftClient client) {
         if (client.player == null) return;
 
-        if (client.player.isGliding() && !client.options.jumpKey.isPressed()) {
+        if (client.player.isFallFlying() && !client.options.jumpKey.isPressed()) {
             elytraTime = (elytraTime + 1) % 1000;
         } else {
             elytraTime = 0;

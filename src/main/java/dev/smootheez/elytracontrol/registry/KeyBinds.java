@@ -18,15 +18,8 @@ public class KeyBinds {
             "key.category.elytracontrol"
     );
 
-    public static final KeyBinding autoFlightKey = new KeyBinding(
-            "key." + Constants.MOD_ID + ".autoFLightKey",
-            InputUtil.GLFW_KEY_H,
-            "key.category.elytracontrol"
-    );
-
     public static void registerKeyBinds() {
         KeyBindingHelper.registerKeyBinding(elytraToggleKey);
         KeyBindingHelper.registerKeyBinding(easyFlightToggleKey);
-        KeyBindingHelper.registerKeyBinding(autoFlightKey);
     }
 }
