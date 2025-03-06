@@ -1,7 +1,6 @@
 plugins {
-    id 'fabric-loom' version '1.8-SNAPSHOT'
+    id 'fabric-loom' version '1.10-SNAPSHOT'
     id 'maven-publish'
-    id 'com.modrinth.minotaur' version '2.+'
 }
 
 version = project.mod_version
@@ -16,6 +15,9 @@ repositories {
         name = "Terraformers"
         url = "https://maven.terraformersmc.com/"
     }
+    maven {
+        url "https://jitpack.io"
+    }
 }
 
 dependencies {
@@ -25,7 +27,7 @@ dependencies {
 
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
     modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
-    modImplementation "dev.smootheez:smootheez-config-lib:${project.scl_version}"
+    modImplementation "com.github.smootheez:scl:${project.scl_version}"
 }
 
 processResources{
@@ -33,18 +35,6 @@ processResources{
     filteringCharset "UTF-8"
     filesMatching("fabric.mod.json"){
         expand project.properties
-    }
-}
-
-def localProperties = new Properties()
-def localPropertiesFile = rootProject.file('local.properties')
-if (localPropertiesFile.exists()) {
-    localProperties.load(new FileInputStream(localPropertiesFile))
-}
-
-repositories {
-    maven {
-        url localProperties.getProperty('localRepositoryUrl', '')
     }
 }
 
@@ -62,20 +52,4 @@ java {
         toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
     }
     withSourcesJar()
-}
-
-modrinth {
-    token = System.getenv("MODRINTH_TOKEN")
-    projectId = '7lCr5INB'
-    versionNumber = project.mod_version
-    versionName = "${project.mod_name} ${project.mod_version}"
-    versionType = 'release'
-    uploadFile = remapJar
-    gameVersions = ['1.21.2', '1.21.3']
-    loaders = ['fabric']
-    changelog = file('CHANGELOG.md').text
-    dependencies {
-        required.project 'fabric-api'
-        required.project 'smootheez-config-lib'
-    }
 }
