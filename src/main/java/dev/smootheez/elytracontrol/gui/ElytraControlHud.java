@@ -21,7 +21,7 @@ public class ElytraControlHud implements HudRenderCallback {
     @Override
     public void onHudRender(DrawContext drawContext, float v) {
         if (!EndTickEvent.elytraToggle) {
-            lockIconMode(drawContext, ElytraControlConfig.getInstance().getLockIconMode().getValue());
+            lockIconMode(drawContext, ElytraControlConfig.lockIconMode.getValue());
         }
     }
 

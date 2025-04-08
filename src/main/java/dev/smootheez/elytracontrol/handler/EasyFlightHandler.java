@@ -46,7 +46,7 @@ public class EasyFlightHandler {
         if (client.player == null || client.interactionManager == null) return false;
 
         boolean isWearingElytra = client.player.getEquippedStack(EquipmentSlot.CHEST).getItem() == Items.ELYTRA;
-        return EndTickEvent.elytraToggle && ElytraControlConfig.getInstance().getEasyFlight().getValue()
+        return EndTickEvent.elytraToggle && ElytraControlConfig.easyFlight.getValue()
                 && !client.player.isFallFlying() && client.player.isOnGround()
                 && isHoldingFirework(client.player) && isWearingElytra
                 && isCrosshairClear(client) && !client.interactionManager.getCurrentGameMode().isCreative()

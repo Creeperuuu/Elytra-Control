@@ -23,7 +23,6 @@ public class EndTickEvent implements ClientTickEvents.EndTick {
     public static boolean easyFlightToggle = true;
     public static String playerUUID;
     private int elytraTime = 0;
-    private final ElytraControlConfig config = ElytraControlConfig.getInstance();
 
     @Override
     public void onEndTick(MinecraftClient client) {
@@ -43,7 +42,7 @@ public class EndTickEvent implements ClientTickEvents.EndTick {
         toggleElytraIfKeyPressed(player);
         isEasyFlightKeyPressed(player);
 
-        if (keyJump.wasPressed() && fallFlyingEntity && elytraTime > randomNumber && config.getElytraCancel().getValue()) {
+        if (keyJump.wasPressed() && fallFlyingEntity && elytraTime > randomNumber && ElytraControlConfig.elytraCancel.getValue()) {
             stopFlying(client.player);
         }
 
@@ -54,17 +53,17 @@ public class EndTickEvent implements ClientTickEvents.EndTick {
     }
 
     private void isEasyFlightKeyPressed(PlayerEntity player) {
-        while (config.getEasyFlight().getValue() && KeyBinds.easyFlightToggleKey.wasPressed()) {
+        while (ElytraControlConfig.easyFlight.getValue() && KeyBinds.easyFlightToggleKey.wasPressed()) {
             easyFlightToggle = !easyFlightToggle;
-            if (config.getEasyFlightMessage().getValue())
+            if (ElytraControlConfig.easyFlightMessage.getValue())
                 player.sendMessage(ScreenTexts.composeToggleText(Text.translatable("message." + Constants.MOD_ID + ".toggleEasyFlight"), easyFlightToggle), true);
         }
     }
 
     private void toggleElytraIfKeyPressed(PlayerEntity player) {
-        while (KeyBinds.elytraToggleKey.wasPressed() && config.getElytraLock().getValue()) {
+        while (KeyBinds.elytraToggleKey.wasPressed() && ElytraControlConfig.elytraLock.getValue()) {
             elytraToggle = !elytraToggle;
-            if (config.getElytraLockMessage().getValue())
+            if (ElytraControlConfig.elytraLockMessage.getValue())
                 player.sendMessage(ScreenTexts.composeToggleText(Text.translatable("message." + Constants.MOD_ID + ".toggleElytraLock"), elytraToggle), true);
         }
     }

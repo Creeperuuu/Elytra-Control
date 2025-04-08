@@ -17,7 +17,7 @@ public class ElytraControl implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         Constants.LOGGER.info("Initializing " + Constants.MOD_ID + "...");
-        ConfigRegistry.registerConfig(ElytraControlConfig.getInstance());
+        ConfigRegistry.registerConfig(ElytraControlConfig.class);
 
         KeyBinds.registerKeyBinds();
 
