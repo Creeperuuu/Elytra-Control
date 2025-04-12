@@ -12,11 +12,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Read Java version
+        id: properties
+        shell: bash
+        run: |
+          JAVA_VERSION=$(grep "java_version" gradle.properties | cut -d'=' -f2 | tr -d ' ')
+          echo "java_version=$JAVA_VERSION" >> $GITHUB_OUTPUT
+
       - name: Set up JDK
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: 21
+          java-version: ${{ steps.properties.outputs.java_version }}
           cache: gradle
 
       - name: Grant execute permission for gradlew

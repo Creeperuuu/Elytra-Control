@@ -53,3 +53,25 @@ java {
     }
     withSourcesJar()
 }
+
+def tagName = project.mod_version
+def tagMessage = "Release version ${tagName}"
+
+tasks.register("uploadMod") {
+    group = "Publishing"
+    description = "Create tag for current version, push it to origin, and upload it to Modrinth and Curseforge."
+
+    doLast {
+        println "Creating tag with name: ${tagName}"
+        println "Creating tag with description: ${tagMessage}"
+
+        providers.exec {
+            commandLine "git", "tag", "-a", tagName, "-m", tagMessage
+        }
+
+        println "Pusihing tag to origin..."
+        providers.exec {
+            commandLine "git", "push", "origin", tagName
+        }
+    }
+}

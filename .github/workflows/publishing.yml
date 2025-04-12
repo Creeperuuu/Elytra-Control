@@ -11,11 +11,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Read Java version
+        id: properties
+        shell: bash
+        run: |
+          JAVA_VERSION=$(grep "java_version" gradle.properties | cut -d'=' -f2 | tr -d ' ')
+          echo "java_version=$JAVA_VERSION" >> $GITHUB_OUTPUT
+
       - name: Set up JDK
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: 21
+          java-version: ${{ steps.properties.outputs.java_version }}
           cache: gradle
 
       - name: Grant execute permission for gradlew
@@ -37,19 +44,27 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Read required properties
+        id: properties
+        shell: bash
+        run: |
+          JAVA_VERSION=$(grep "java_version" gradle.properties | cut -d'=' -f2 | tr -d ' ')
+          MOD_VERSION=$(grep "mod_version" gradle.properties | cut -d'=' -f2 | tr -d ' ')
+          FABRIC_VERSION=$(grep "fabric_version" gradle.properties | cut -d'=' -f2 | tr -d ' ')
+          SCL_VERSION=$(grep "scl_version" gradle.properties | cut -d'=' -f2 | tr -d ' ')
+          MOD_NAME=$(grep "mod_name" gradle.properties | cut -d'=' -f2- | sed 's/^ //')
+          
+          echo "java_version=$JAVA_VERSION" >> $GITHUB_OUTPUT
+          echo "mod_version=$MOD_VERSION" >> $GITHUB_OUTPUT
+          echo "fabric_version=$FABRIC_VERSION" >> $GITHUB_OUTPUT
+          echo "scl_version=$SCL_VERSION" >> $GITHUB_OUTPUT
+          echo "mod_name=$MOD_NAME" >> $GITHUB_OUTPUT
+
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
           name: Artifacts
           path: build/libs/
-
-      - name: Get mod version
-        id: get_version
-        run: |
-          # Extract version from the tag filename
-          VERSION=${GITHUB_REF#refs/tags/}
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
-          echo "Extracted version: $VERSION"
 
       - name: Find main JAR file
         id: find_jar
@@ -69,17 +84,17 @@ jobs:
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
 
           files: ${{ steps.find_jar.outputs.jar_file }}
-          name: "Elytra Control ${{ steps.get_version.outputs.version }}"
+          name: "${{ steps.properties.outputs.mod_name }} ${{ steps.properties.outputs.mod_version }}"
           version-type: release
-          version: ${{ steps.get_version.outputs.version }}
+          version: ${{ steps.properties.outputs.mod_version }}
           changelog: ${{ github.event.release.body }}
           dependencies: |
-            scl@0.1.5-1.20.5(required){modrinth:zLVNfWvA}{curseforge:1107934}#(ignore:github)
-            fabric@0.102.0+1.21(required){modrinth:P7dR8mSH}{curseforge:306612}#(ignore:github)
+            scl@${{ steps.properties.outputs.scl_version }}(required){modrinth:zLVNfWvA}{curseforge:1107934}#(ignore:github)
+            fabric@${{ steps.properties.outputs.fabric_version }}(required){modrinth:P7dR8mSH}{curseforge:306612}#(ignore:github)
 
           loaders: fabric
           game-versions: |
             1.21.2
             1.21.3
             1.21.4
-          java: 21
+          java: ${{ steps.properties.outputs.java_version }}
