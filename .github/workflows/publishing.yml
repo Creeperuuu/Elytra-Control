@@ -15,7 +15,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: 17
+          java-version: 21
           cache: gradle
 
       - name: Grant execute permission for gradlew
@@ -71,13 +71,14 @@ jobs:
           files: ${{ steps.find_jar.outputs.jar_file }}
           name: "Elytra Control ${{ steps.get_version.outputs.version }}"
           version-type: release
-          version-number: ${{ steps.get_version.outputs.version }}
+          version: ${{ steps.get_version.outputs.version }}
           changelog: ${{ github.event.release.body }}
           dependencies: |
-            scl@0.1.2-1.20.2(required){modrinth:zLVNfWvA}{curseforge:1107934}#(ignore:github)
-            fabric@0.91.6+1.20.2(required){modrinth:P7dR8mSH}{curseforge:306612}#(ignore:github)
+            scl@0.1.5-1.20.5(required){modrinth:zLVNfWvA}{curseforge:1107934}#(ignore:github)
+            fabric@0.102.0+1.21(required){modrinth:P7dR8mSH}{curseforge:306612}#(ignore:github)
 
           loaders: fabric
           game-versions: |
-            1.20.2
-          java: 17
+            1.21
+            1.21.1
+          java: 21

@@ -119,3 +119,4 @@ run/
 /.codiumai/local_index.json
 /.codiumai/
 /local.properties
+/remappedSrc/
