@@ -57,21 +57,24 @@ java {
 def tagName = project.mod_version
 def tagMessage = "Release version ${tagName}"
 
+tasks.register('createTag', Exec) {
+    group = "Publishing"
+    description = "Create tag for current version"
+    println "Creating tag with name: ${tagName}"
+    println "Creating tag with description: ${tagMessage}"
+    commandLine "git", "tag", "-a", tagName, "-m", tagMessage
+}
+
+tasks.register('pushTag', Exec) {
+    group = "Publishing"
+    description = "Push tag to origin"
+    println "Pushing tag to origin..."
+    commandLine "git", "push", "origin", tagName
+    dependsOn createTag
+}
+
 tasks.register("uploadMod") {
     group = "Publishing"
     description = "Create tag for current version, push it to origin, and upload it to Modrinth and Curseforge."
-
-    doLast {
-        println "Creating tag with name: ${tagName}"
-        println "Creating tag with description: ${tagMessage}"
-
-        exec {
-            commandLine "git", "tag", "-a", tagName, "-m", tagMessage
-        }
-
-        println "Pushing tag to origin..."
-        exec {
-            commandLine "git", "push", "origin", tagName
-        }
-    }
+    dependsOn pushTag
 }
