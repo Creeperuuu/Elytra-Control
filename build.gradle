@@ -65,12 +65,12 @@ tasks.register("uploadMod") {
         println "Creating tag with name: ${tagName}"
         println "Creating tag with description: ${tagMessage}"
 
-        providers.exec {
+        exec {
             commandLine "git", "tag", "-a", tagName, "-m", tagMessage
         }
 
-        println "Pusihing tag to origin..."
-        providers.exec {
+        println "Pushing tag to origin..."
+        exec {
             commandLine "git", "push", "origin", tagName
         }
     }
