@@ -6,25 +6,28 @@ import dev.smootheez.elytracontrol.config.option.LockIconMode;
 import dev.smootheez.elytracontrol.event.EndTickEvent;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
+import net.fabricmc.fabric.api.client.rendering.v1.HudLayerRegistrationCallback;
+import net.fabricmc.fabric.api.client.rendering.v1.IdentifiedLayer;
+import net.fabricmc.fabric.api.client.rendering.v1.LayeredDrawerWrapper;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.RenderTickCounter;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 @Environment(EnvType.CLIENT)
-public class ElytraControlHud implements HudRenderCallback {
+public class ElytraControlHud implements HudLayerRegistrationCallback {
     private final MinecraftClient client = MinecraftClient.getInstance();
     private final Identifier elytraLockTexture = Identifier.of(Constants.MOD_ID, "textures/gui/elytra_lock.png");
     private final Text elytraLockNotifier = Text.translatable("notifier." + Constants.MOD_ID + ".toggleElytraLock");
 
     @Override
-    public void onHudRender(DrawContext drawContext, RenderTickCounter renderTickCounter) {
-        if (!EndTickEvent.elytraToggle) {
-            lockIconMode(drawContext, ElytraControlConfig.lockIconMode.getValue());
-        }
+    public void register(LayeredDrawerWrapper layeredDrawer) {
+        layeredDrawer.attachLayerAfter(IdentifiedLayer.MISC_OVERLAYS, elytraLockTexture, (context, tickCounter) -> {
+            if (!EndTickEvent.elytraToggle) {
+                lockIconMode(context, ElytraControlConfig.lockIconMode.getValue());
+            }
+        });
     }
 
     private void lockIconMode(DrawContext drawContext, LockIconMode lockIconMode) {
