@@ -3,6 +3,7 @@ package dev.smootheez.elytracontrol.event;
 import dev.smootheez.elytracontrol.Constants;
 import dev.smootheez.elytracontrol.config.ElytraControlConfig;
 import dev.smootheez.elytracontrol.handler.EasyFlightHandler;
+import dev.smootheez.elytracontrol.helpers.PlayerEntityHelper;
 import dev.smootheez.elytracontrol.registry.KeyBinds;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -33,7 +34,7 @@ public class EndTickEvent implements ClientTickEvents.EndTick {
 
         int randomNumber = random.nextInt(3) + 1;
         KeyBinding keyJump = client.options.jumpKey;
-        boolean fallFlyingEntity = player.isFallFlying();
+        boolean fallFlyingEntity = PlayerEntityHelper.isPlayerGliding(client.player);
 
         if (playerUUID == null) {
             playerUUID = player.getUuidAsString();
@@ -69,14 +70,14 @@ public class EndTickEvent implements ClientTickEvents.EndTick {
     }
 
     private void stopFlying(ClientPlayerEntity player) {
-        player.stopFallFlying();
+        player.stopGliding();
         player.networkHandler.sendPacket(new ClientCommandC2SPacket(player, ClientCommandC2SPacket.Mode.START_FALL_FLYING));
     }
 
     private void updateElytraFlyingTime(MinecraftClient client) {
         if (client.player == null) return;
 
-        if (client.player.isFallFlying() && !client.options.jumpKey.isPressed()) {
+        if (PlayerEntityHelper.isPlayerGliding(client.player) && !client.options.jumpKey.isPressed()) {
             elytraTime = (elytraTime + 1) % 1000;
         } else {
             elytraTime = 0;

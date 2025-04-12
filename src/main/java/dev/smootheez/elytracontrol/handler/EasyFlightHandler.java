@@ -2,6 +2,7 @@ package dev.smootheez.elytracontrol.handler;
 
 import dev.smootheez.elytracontrol.config.ElytraControlConfig;
 import dev.smootheez.elytracontrol.event.EndTickEvent;
+import dev.smootheez.elytracontrol.helpers.PlayerEntityHelper;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
@@ -47,7 +48,7 @@ public class EasyFlightHandler {
 
         boolean isWearingElytra = client.player.getEquippedStack(EquipmentSlot.CHEST).getItem() == Items.ELYTRA;
         return EndTickEvent.elytraToggle && ElytraControlConfig.easyFlight.getValue()
-                && !client.player.isFallFlying() && client.player.isOnGround()
+                && !PlayerEntityHelper.isPlayerGliding(client.player) && client.player.isOnGround()
                 && isHoldingFirework(client.player) && isWearingElytra
                 && isCrosshairClear(client) && !client.interactionManager.getCurrentGameMode().isCreative()
                 && EndTickEvent.easyFlightToggle && !client.player.isTouchingWater();
@@ -128,7 +129,7 @@ public class EasyFlightHandler {
 
         ItemStack itemStack = client.player.getStackInHand(client.player.getActiveHand());
 
-        ActionResult actionResult = itemStack.use(client.world, client.player, client.player.getActiveHand()).getResult();
+        ActionResult actionResult = itemStack.use(client.world, client.player, client.player.getActiveHand());
 
         boolean isUsingItem = actionResult.isAccepted();
         boolean isSwingingHand = client.player.handSwinging;

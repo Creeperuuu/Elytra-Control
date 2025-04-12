@@ -1,5 +1,6 @@
 package dev.smootheez.elytracontrol.mixin;
 
+import dev.smootheez.elytracontrol.helpers.PlayerEntityHelper;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.entity.player.PlayerEntity;
@@ -13,10 +14,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Environment(EnvType.CLIENT)
 @Mixin(PlayerEntity.class)
 public class PlayerEntityMixin {
-    @Inject(method = "checkFallFlying", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "checkGliding", at = @At("HEAD"), cancellable = true)
     private void injectCheckFallFlying(CallbackInfoReturnable<Boolean> cir) {
         PlayerEntity player = (PlayerEntity) (Object) this;
-        if (player.isSneaking() || player.isFallFlying()){
+        if (player.isSneaking() || PlayerEntityHelper.isPlayerGliding(player)){
             return;
         }
         double offset = 4.0 / 6.0;
