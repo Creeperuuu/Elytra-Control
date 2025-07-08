@@ -1,4 +1,5 @@
 {
-  "key.elytracontrol.controlFlying": "Stop Flying",
+  "key.elytracontrol.stopFlying": "Stop Flying",
+  "key.elytracontrol.startFlying": "Start Flying",
   "key.categories.elytracontrol": "Elytra Control"
 }

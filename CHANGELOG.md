@@ -1,1 +1,1 @@
-- Updated from 1.21.5 into 1.21.6
+- Add keybind for start and stop flying when using elytra

@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.callback.*;
 import java.util.*;
 
 @Mixin(KeyMapping.class)
-public class KeyMappingMixin {
+public abstract class KeyMappingMixin {
     @Final
     @Shadow
     private static Map<String, Integer> CATEGORY_SORT_ORDER;
