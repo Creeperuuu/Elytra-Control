@@ -1,33 +1,28 @@
 package dev.smootheez.elytracontrol.gui;
 
-import dev.smootheez.elytracontrol.Constants;
-import dev.smootheez.elytracontrol.config.ElytraControlConfig;
-import dev.smootheez.elytracontrol.config.option.LockIconMode;
-import dev.smootheez.elytracontrol.event.EndTickEvent;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.client.rendering.v1.HudLayerRegistrationCallback;
-import net.fabricmc.fabric.api.client.rendering.v1.IdentifiedLayer;
-import net.fabricmc.fabric.api.client.rendering.v1.LayeredDrawerWrapper;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.render.RenderLayer;
-import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
+import dev.smootheez.elytracontrol.*;
+import dev.smootheez.elytracontrol.config.*;
+import dev.smootheez.elytracontrol.config.option.*;
+import dev.smootheez.elytracontrol.event.*;
+import net.fabricmc.api.*;
+import net.fabricmc.fabric.api.client.rendering.v1.hud.*;
+import net.minecraft.client.*;
+import net.minecraft.client.gl.*;
+import net.minecraft.client.gui.*;
+import net.minecraft.client.render.*;
+import net.minecraft.text.*;
+import net.minecraft.util.*;
 
 @Environment(EnvType.CLIENT)
-public class ElytraControlHud implements HudLayerRegistrationCallback {
+public class ElytraControlHud implements HudElement {
     private final MinecraftClient client = MinecraftClient.getInstance();
     private final Identifier elytraLockTexture = Identifier.of(Constants.MOD_ID, "textures/gui/elytra_lock.png");
     private final Text elytraLockNotifier = Text.translatable("notifier." + Constants.MOD_ID + ".toggleElytraLock");
 
     @Override
-    public void register(LayeredDrawerWrapper layeredDrawer) {
-        layeredDrawer.attachLayerAfter(IdentifiedLayer.MISC_OVERLAYS, elytraLockTexture, (context, tickCounter) -> {
-            if (!EndTickEvent.elytraToggle) {
-                lockIconMode(context, ElytraControlConfig.lockIconMode.getValue());
-            }
-        });
+    public void render(DrawContext drawContext, RenderTickCounter renderTickCounter) {
+        if (!EndTickEvent.elytraToggle)
+            lockIconMode(drawContext, ElytraControlConfig.lockIconMode.getValue());
     }
 
     private void lockIconMode(DrawContext drawContext, LockIconMode lockIconMode) {
@@ -38,7 +33,7 @@ public class ElytraControlHud implements HudLayerRegistrationCallback {
 
         switch (lockIconMode) {
             case ICON_ONLY:
-                drawContext.drawTexture(RenderLayer::getGuiTextured, elytraLockTexture,
+                drawContext.drawTexture(RenderPipelines.GUI_TEXTURED, elytraLockTexture,
                         baseX, baseY, 0, 0, iconSize, iconSize, iconSize, iconSize);
                 break;
             case TEXT_ONLY:
@@ -46,7 +41,7 @@ public class ElytraControlHud implements HudLayerRegistrationCallback {
                         baseX, baseY + (iconSize - client.textRenderer.fontHeight), 0xFF1313, false);
                 break;
             case ICON_TEXT:
-                drawContext.drawTexture(RenderLayer::getGuiTextured, elytraLockTexture,
+                drawContext.drawTexture(RenderPipelines.GUI_TEXTURED, elytraLockTexture,
                         baseX, baseY, 0, 0, iconSize, iconSize, iconSize, iconSize);
 
                 drawContext.drawText(client.textRenderer, elytraLockNotifier,

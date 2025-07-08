@@ -1,15 +1,14 @@
 package dev.smootheez.elytracontrol;
 
-import dev.smootheez.elytracontrol.config.ElytraControlConfig;
-import dev.smootheez.elytracontrol.event.EndTickEvent;
-import dev.smootheez.elytracontrol.gui.ElytraControlHud;
-import dev.smootheez.elytracontrol.registry.KeyBinds;
-import dev.smootheez.scl.registry.ConfigRegistry;
-import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.fabricmc.fabric.api.client.rendering.v1.HudLayerRegistrationCallback;
+import dev.smootheez.elytracontrol.config.*;
+import dev.smootheez.elytracontrol.event.*;
+import dev.smootheez.elytracontrol.gui.*;
+import dev.smootheez.elytracontrol.registry.*;
+import dev.smootheez.scl.registry.*;
+import net.fabricmc.api.*;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.*;
+import net.fabricmc.fabric.api.client.rendering.v1.hud.*;
+import net.minecraft.util.*;
 
 
 @Environment(EnvType.CLIENT)
@@ -21,7 +20,7 @@ public class ElytraControl implements ClientModInitializer {
 
         KeyBinds.registerKeyBinds();
 
-        HudLayerRegistrationCallback.EVENT.register(new ElytraControlHud());
+        HudElementRegistry.addFirst(Identifier.of(Constants.MOD_ID), new ElytraControlHud());
         ClientTickEvents.END_CLIENT_TICK.register(new EndTickEvent());
     }
 }
