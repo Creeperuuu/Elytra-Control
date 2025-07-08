@@ -1,32 +1,4 @@
 {
-  "key.elytracontrol.elytraToggle": "Toggle Elytra",
-  "key.elytracontrol.easyFlightToggle": "Toggle Easy Flight",
-
-  "message.elytracontrol.toggleElytraLock": "Toggle Elytra",
-  "message.elytracontrol.toggleEasyFlight": "Toggle Easy Flight",
-
-  "key.category.elytracontrol": "Elytra Control",
-
-  "options.elytracontrol.elytraCancel": "Elytra Cancel",
-  "options.elytracontrol.elytraLock": "Elytra Lock",
-  "options.elytracontrol.elytraLockMessage": "Show Elytra Lock Message",
-  "options.elytracontrol.easyFlight": "Easy Flight",
-  "options.elytracontrol.easyFlightMessage": "Show Easy Flight Message",
-  "options.elytracontrol.iconLockMode": "Icon Lock Mode",
-  "options.elytracontrol.iconLockMode.none": "None",
-  "options.elytracontrol.iconLockMode.iconOnly": "Icon Only",
-  "options.elytracontrol.iconLockMode.textOnly": "Text Only",
-  "options.elytracontrol.iconLockMode.iconText": "Icon and Text",
-  "options.elytracontrol.pitchUpSpeed": "Ajust Pitch Up Speed",
-  "options.elytracontrol.pitchDownSpeed": "Ajust Pitch Down Speed",
-
-  "elytracontrol.title": "Elytra Control Config",
-
-  "options.elytracontrol.elytraCancel.description": "Whether allowed to stop flying in mid air or not",
-  "options.elytracontrol.elytraLock.description": "Enable or Disable elytra lock feature",
-  "options.elytracontrol.easyFlight.description": "Make elytra to start flying easier, with just right click while holding fireworks (right hand/left hand)",
-  "options.elytracontrol.elytraLockMessage.description": "Turn On/Off overlay message for Elytra Lock",
-  "options.elytracontrol.easyFlightMessage.description": "Turn On/Off overlay message for Easy Flight",
-
-  "notifier.elytracontrol.toggleElytraLock": "Elytra Locked!"
+  "key.elytracontrol.controlFlying": "Stop Flying",
+  "key.categories.elytracontrol": "Elytra Control"
 }

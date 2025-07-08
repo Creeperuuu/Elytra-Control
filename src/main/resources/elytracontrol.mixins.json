@@ -2,8 +2,10 @@
   "required": true,
   "minVersion": "0.8",
   "package": "dev.smootheez.elytracontrol.mixin",
-  "compatibilityLevel": "JAVA_21",
+  "compatibilityLevel": "JAVA_17",
   "client": [
+    "KeyMappingMixin",
+    "OptionsMixin",
     "PlayerEntityMixin"
   ],
   "injectors": {

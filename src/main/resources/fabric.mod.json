@@ -19,8 +19,8 @@
     "client": [
       "dev.smootheez.elytracontrol.ElytraControl"
     ],
-    "modmenu" : [
-      "dev.smootheez.elytracontrol.config.ModMenuApiImpl"
+    "scl" : [
+      "dev.smootheez.elytracontrol.config.ElytraControlConfig"
     ]
   },
   "mixins": [

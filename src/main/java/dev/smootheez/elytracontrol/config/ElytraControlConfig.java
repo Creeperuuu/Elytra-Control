@@ -1,13 +1,12 @@
 package dev.smootheez.elytracontrol.config;
 
-import dev.smootheez.elytracontrol.Constants;
-import dev.smootheez.elytracontrol.config.option.LockIconMode;
-import dev.smootheez.scl.annotation.Config;
-import dev.smootheez.scl.api.ConfigProvider;
-import dev.smootheez.scl.config.ConfigOption;
+import dev.smootheez.elytracontrol.*;
+import dev.smootheez.elytracontrol.config.option.*;
+import dev.smootheez.scl.api.*;
+import dev.smootheez.scl.config.*;
 
-@Config(Constants.MOD_ID)
-public class ElytraControlConfig implements ConfigProvider {
+@Config(name = Constants.MOD_ID, gui = true)
+public class ElytraControlConfig {
     public static final ConfigOption<Boolean> elytraLock = ConfigOption.create("elytraLock", true);
     public static final ConfigOption<Boolean> elytraCancel = ConfigOption.create("elytraCancel", true);
     public static final ConfigOption<Boolean> easyFlight = ConfigOption.create("easyFlight", false);
