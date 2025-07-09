@@ -9,10 +9,9 @@ import org.spongepowered.asm.mixin.injection.callback.*;
 
 @Mixin(Options.class)
 public abstract class OptionsMixin {
+
     @Mutable
-    @Final
-    @Shadow
-    public KeyMapping[] keyMappings;
+    @Shadow @Final public KeyMapping[] keyMappings;
 
     @Inject(method = "<init>", at = @At(
             value = "INVOKE",
@@ -22,7 +21,8 @@ public abstract class OptionsMixin {
         this.keyMappings = ArrayUtils.addAll(
                 this.keyMappings,
                 KeyBindsRegistry.START_FLYING,
-                KeyBindsRegistry.STOP_FLYING
+                KeyBindsRegistry.STOP_FLYING,
+                KeyBindsRegistry.DISABLE_FLYING
         );
     }
 }

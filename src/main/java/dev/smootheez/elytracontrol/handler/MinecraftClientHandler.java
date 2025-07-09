@@ -27,10 +27,12 @@ public class MinecraftClientHandler {
             player.stopFallFlying();
             sendStartFlyingPacket(player);
         }
+
         while (KeyBindsRegistry.START_FLYING.consumeClick()) {
             if (player.isFallFlying()) continue;
             sendStartFlyingPacket(player);
         }
+
         while (KeyBindsRegistry.DISABLE_FLYING.consumeClick() && ElytraControlConfig.ALLOW_FLYING.getValue()) {
             shouldDisableFlying = !shouldDisableFlying;
             Constants.LOGGER.info("Flying disabled: {}", shouldDisableFlying);
@@ -44,7 +46,7 @@ public class MinecraftClientHandler {
         Random random = new Random();
         int randomNumber = random.nextInt(3) + 1;
 
-        if (client.options.keyJump.consumeClick() && player.isFallFlying() && elytraTime > randomNumber && KeyBindsRegistry.STOP_FLYING.isUnbound()) {
+        if (client.options.keyJump.consumeClick() && player.isFallFlying() && elytraTime > randomNumber) {
             player.stopFallFlying();
             sendStartFlyingPacket(player);
         }

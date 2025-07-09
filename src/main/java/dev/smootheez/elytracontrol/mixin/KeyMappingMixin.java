@@ -9,9 +9,8 @@ import java.util.*;
 
 @Mixin(KeyMapping.class)
 public abstract class KeyMappingMixin {
-    @Final
-    @Shadow
-    private static Map<String, Integer> CATEGORY_SORT_ORDER;
+
+    @Shadow @Final private static Map<String, Integer> CATEGORY_SORT_ORDER;
 
     @Inject(method = "<clinit>", at = @At(
             value = "FIELD",
