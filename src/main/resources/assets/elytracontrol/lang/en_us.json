@@ -4,5 +4,7 @@
   "key.elytracontrol.disableFlying": "Disable Flying",
   "key.categories.elytracontrol": "Elytra Control",
 
+  "notification.elytracontrol.disableFlying": "Disable Flying",
+
   "config.screen.elytracontrol.title": "Elytra Control Config"
 }

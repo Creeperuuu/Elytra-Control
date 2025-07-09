@@ -20,7 +20,8 @@ public abstract class GuiMixin {
                 Component.literal(text),
                 (this.screenWidth - this.getFont().width(text)) / 2,
                 10,
-                0xFFFFFF
+                0xFFFFFF,
+                false
         );
     }
 }

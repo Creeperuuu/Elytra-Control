@@ -18,7 +18,6 @@ public abstract class KeyMappingMixin {
             shift = At.Shift.AFTER
     ))
     private static void addCustomCategory(CallbackInfo info) {
-        String category = "key.categories.elytracontrol";
-        CATEGORY_SORT_ORDER.put(category, CATEGORY_SORT_ORDER.size());
+        CATEGORY_SORT_ORDER.put("key.categories.elytracontrol", CATEGORY_SORT_ORDER.size());
     }
 }

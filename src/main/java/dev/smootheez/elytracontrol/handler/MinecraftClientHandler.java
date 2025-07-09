@@ -1,10 +1,10 @@
 package dev.smootheez.elytracontrol.handler;
 
-import dev.smootheez.elytracontrol.*;
 import dev.smootheez.elytracontrol.config.*;
 import dev.smootheez.elytracontrol.registry.*;
 import net.minecraft.client.*;
 import net.minecraft.client.player.*;
+import net.minecraft.network.chat.*;
 import net.minecraft.network.protocol.game.*;
 
 import java.util.*;
@@ -35,7 +35,11 @@ public class MinecraftClientHandler {
 
         while (KeyBindsRegistry.DISABLE_FLYING.consumeClick() && ElytraControlConfig.ALLOW_FLYING.getValue()) {
             shouldDisableFlying = !shouldDisableFlying;
-            Constants.LOGGER.info("Flying disabled: {}", shouldDisableFlying);
+
+            if (ElytraControlConfig.DISABLE_NOTIFICATION.getValue())
+                player.displayClientMessage(
+                        CommonComponents.optionStatus(Component.translatable("notification.elytracontrol.disableFlying"), shouldDisableFlying), true
+                );
         }
     }
 

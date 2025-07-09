@@ -8,4 +8,5 @@ import dev.smootheez.scl.config.*;
 public class ElytraControlConfig {
     public static final ConfigOption<Boolean> DEFAULT_ELTRA_CONTROL = ConfigOption.create("defaultElytraControl", true);
     public static final ConfigOption<Boolean> ALLOW_FLYING = ConfigOption.create("allowFlying", true);
+    public static final ConfigOption<Boolean> DISABLE_NOTIFICATION = ConfigOption.create("disableNotification", true);
 }
