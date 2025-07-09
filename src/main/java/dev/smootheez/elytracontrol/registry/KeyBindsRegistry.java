@@ -18,6 +18,12 @@ public class KeyBindsRegistry {
             InputConstants.UNKNOWN.getValue(),
             KEYBIND_CATEGORY
     );
+    public static final KeyMapping DISABLE_FLYING = new KeyMapping(
+            "key.elytracontrol.disableFlying",
+            InputConstants.Type.KEYSYM,
+            InputConstants.KEY_V,
+            KEYBIND_CATEGORY
+    );
 
 }
 

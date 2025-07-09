@@ -1,6 +1,7 @@
 package dev.smootheez.elytracontrol.mixin;
 
 import dev.smootheez.elytracontrol.config.*;
+import dev.smootheez.elytracontrol.handler.*;
 import net.fabricmc.api.*;
 import net.minecraft.client.*;
 import net.minecraft.world.entity.player.*;
@@ -22,10 +23,8 @@ public abstract class PlayerMixin {
         if (clientPlayer == null) return;
         var uuid = clientPlayer.getStringUUID();
 
-        if (player.getStringUUID().equals(uuid) && ElytraControlConfig.ALLOW_FLYING.getValue()) {
-            if (options.keyJump.isDown() && !ElytraControlConfig.DEFAULT_ELTRA_CONTROL.getValue())
-                cir.setReturnValue(false);
-        } else {
+        if ((player.getStringUUID().equals(uuid) && MinecraftClientHandler.isShouldDisableFlying() || !ElytraControlConfig.ALLOW_FLYING.getValue())
+                || (options.keyJump.isDown() && !ElytraControlConfig.DEFAULT_ELTRA_CONTROL.getValue())) {
             cir.setReturnValue(false);
         }
     }
