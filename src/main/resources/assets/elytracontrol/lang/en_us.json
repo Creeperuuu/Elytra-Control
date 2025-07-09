@@ -1,5 +1,7 @@
 {
   "key.elytracontrol.stopFlying": "Stop Flying",
   "key.elytracontrol.startFlying": "Start Flying",
-  "key.categories.elytracontrol": "Elytra Control"
+  "key.categories.elytracontrol": "Elytra Control",
+
+  "config.screen.elytracontrol.title": "Elytra Control Config"
 }

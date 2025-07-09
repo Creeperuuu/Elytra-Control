@@ -9,13 +9,13 @@ public class KeyBindsRegistry {
     public static final KeyMapping STOP_FLYING = new KeyMapping(
             "key.elytracontrol.stopFlying",
             InputConstants.Type.KEYSYM,
-            InputConstants.KEY_SPACE,
+            InputConstants.UNKNOWN.getValue(),
             KEYBIND_CATEGORY
     );
     public static final KeyMapping START_FLYING = new KeyMapping(
             "key.elytracontrol.startFlying",
             InputConstants.Type.KEYSYM,
-            InputConstants.KEY_SPACE,
+            InputConstants.UNKNOWN.getValue(),
             KEYBIND_CATEGORY
     );
 

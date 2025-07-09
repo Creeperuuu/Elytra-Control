@@ -1,13 +1,13 @@
 package dev.smootheez.elytracontrol.mixin;
 
 import dev.smootheez.elytracontrol.handler.*;
-import dev.smootheez.elytracontrol.registry.*;
+import net.fabricmc.api.*;
 import net.minecraft.client.*;
-import net.minecraft.network.protocol.game.*;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.*;
 
+@Environment(EnvType.CLIENT)
 @Mixin(Minecraft.class)
 public abstract class MinecraftClientMixin {
     @Unique

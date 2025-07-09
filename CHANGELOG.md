@@ -1,1 +1,2 @@
-- Add keybind for start and stop flying when using elytra
+- Add keybind for stop elytra flight
+- Add keybind to start elytra flight

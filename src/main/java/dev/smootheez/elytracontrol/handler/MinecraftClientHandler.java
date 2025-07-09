@@ -2,6 +2,7 @@ package dev.smootheez.elytracontrol.handler;
 
 import dev.smootheez.elytracontrol.registry.*;
 import net.minecraft.client.*;
+import net.minecraft.client.player.*;
 import net.minecraft.network.protocol.game.*;
 
 import java.util.*;
@@ -21,11 +22,11 @@ public class MinecraftClientHandler {
         while (KeyBindsRegistry.STOP_FLYING.consumeClick()) {
             if (!player.isFallFlying()) continue;
             player.stopFallFlying();
-            player.connection.send(new ServerboundPlayerCommandPacket(player, ServerboundPlayerCommandPacket.Action.START_FALL_FLYING));
+            sendStartFlyingPacket(player);
         }
         while (KeyBindsRegistry.START_FLYING.consumeClick()) {
             if (player.isFallFlying()) continue;
-            player.connection.send(new ServerboundPlayerCommandPacket(player, ServerboundPlayerCommandPacket.Action.START_FALL_FLYING));
+            sendStartFlyingPacket(player);
         }
     }
 
@@ -36,13 +37,17 @@ public class MinecraftClientHandler {
         Random random = new Random();
         int randomNumber = random.nextInt(3) + 1;
 
-        if (client.options.keyJump.consumeClick() && player.isFallFlying() && elytraTime > randomNumber) {
+        if (client.options.keyJump.consumeClick() && player.isFallFlying() && elytraTime > randomNumber && KeyBindsRegistry.STOP_FLYING.isUnbound()) {
             player.stopFallFlying();
-            player.connection.send(new ServerboundPlayerCommandPacket(player, ServerboundPlayerCommandPacket.Action.START_FALL_FLYING));
+            sendStartFlyingPacket(player);
         }
 
         if (player.isFallFlying() && !client.options.keyJump.isDown())
             elytraTime = (elytraTime + 1) % 1000;
         else elytraTime = 0;
+    }
+
+    private void sendStartFlyingPacket(LocalPlayer player) {
+        player.connection.send(new ServerboundPlayerCommandPacket(player, ServerboundPlayerCommandPacket.Action.START_FALL_FLYING));
     }
 }

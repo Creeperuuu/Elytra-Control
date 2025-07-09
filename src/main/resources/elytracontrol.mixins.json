@@ -5,9 +5,10 @@
   "compatibilityLevel": "JAVA_17",
   "client": [
     "KeyMappingMixin",
+    "LocalPlayerMixin",
     "MinecraftClientMixin",
     "OptionsMixin",
-    "PlayerEntityMixin"
+    "PlayerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
