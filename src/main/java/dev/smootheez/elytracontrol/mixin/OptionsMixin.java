@@ -22,7 +22,8 @@ public abstract class OptionsMixin {
                 this.keyMappings,
                 KeyBindsRegistry.START_FLYING,
                 KeyBindsRegistry.STOP_FLYING,
-                KeyBindsRegistry.DISABLE_FLYING
+                KeyBindsRegistry.DISABLE_FLYING,
+                KeyBindsRegistry.EASY_FLY
         );
     }
 }

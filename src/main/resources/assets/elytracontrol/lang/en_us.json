@@ -2,9 +2,11 @@
   "key.elytracontrol.stopFlying": "Stop Flying",
   "key.elytracontrol.startFlying": "Start Flying",
   "key.elytracontrol.disableFlying": "Disable Flying",
+  "key.elytracontrol.easyFly": "Easy Fly",
   "key.categories.elytracontrol": "Elytra Control",
 
   "notification.elytracontrol.disableFlying": "Disable Flying",
+  "notification.elytracontrol.easyFly": "Easy Fly",
 
   "config.screen.elytracontrol.title": "Elytra Control Config"
 }

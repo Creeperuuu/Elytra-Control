@@ -20,6 +20,7 @@ public class MinecraftClientHandler {
     private int elytraTime = 0;
     private final Minecraft client;
     private static boolean shouldDisableFlying = false;
+    private static boolean shouldEasyFly = true;
     private ActionStep actionStep = ActionStep.START_MOMENTUM;
     private boolean startEasyFly = false;
 
@@ -50,6 +51,14 @@ public class MinecraftClientHandler {
             if (ElytraControlConfig.DISABLE_NOTIFICATION.getValue())
                 player.displayClientMessage(
                         CommonComponents.optionStatus(Component.translatable("notification.elytracontrol.disableFlying"), shouldDisableFlying), true
+                );
+        }
+        while (KeyBindsRegistry.EASY_FLY.consumeClick() && ElytraControlConfig.EASY_FLY.getValue()) {
+            shouldEasyFly = !shouldEasyFly;
+
+            if (ElytraControlConfig.EASY_FLY_NOTIFICATION.getValue())
+                player.displayClientMessage(
+                        CommonComponents.optionStatus(Component.translatable("notification.elytracontrol.easyFly"), shouldEasyFly), true
                 );
         }
     }
@@ -128,7 +137,9 @@ public class MinecraftClientHandler {
                 && !player.isInWater()
                 && !player.isUsingItem()
                 && !player.swinging
-                && ElytraControlConfig.EASY_FLY.getValue();
+                && ElytraControlConfig.EASY_FLY.getValue()
+                && shouldEasyFly
+                && !shouldDisableFlying;
     }
 
     private boolean isCorsshairClear() {

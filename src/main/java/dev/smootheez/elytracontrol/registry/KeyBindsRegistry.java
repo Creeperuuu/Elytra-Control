@@ -24,5 +24,11 @@ public class KeyBindsRegistry {
             InputConstants.KEY_V,
             KEYBIND_CATEGORY
     );
+    public static final KeyMapping EASY_FLY = new KeyMapping(
+            "key.elytracontrol.easyFly",
+            InputConstants.Type.KEYSYM,
+            InputConstants.UNKNOWN.getValue(),
+            KEYBIND_CATEGORY
+    );
 }
 
