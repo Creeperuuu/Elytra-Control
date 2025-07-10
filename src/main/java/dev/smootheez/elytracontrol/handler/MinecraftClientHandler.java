@@ -34,21 +34,32 @@ public class MinecraftClientHandler {
 
         if (player == null || gameMode == null) return;
 
-        while (KeyBindsRegistry.STOP_FLYING.consumeClick()) {
-            if (!player.isFallFlying()) continue;
-            player.stopFallFlying();
-            sendStartFlyingPacket(player);
-        }
+        var startFlyingKey = KeyBindsRegistry.START_FLYING;
+        var stopFlyingKey = KeyBindsRegistry.STOP_FLYING;
 
-        while (KeyBindsRegistry.START_FLYING.consumeClick()) {
-            if (player.isFallFlying()) continue;
-            sendStartFlyingPacket(player);
+        if (startFlyingKey.same(stopFlyingKey)) {
+            while (startFlyingKey.consumeClick()) {
+                if (player.isFallFlying())
+                    player.stopFallFlying();
+                sendStartFlyingPacket(player);
+            }
+        } else {
+            while (startFlyingKey.consumeClick()) {
+                if (player.isFallFlying()) continue;
+                sendStartFlyingPacket(player);
+            }
+
+            while (stopFlyingKey.consumeClick()) {
+                if (!player.isFallFlying()) continue;
+                player.stopFallFlying();
+                sendStartFlyingPacket(player);
+            }
         }
 
         while (KeyBindsRegistry.DISABLE_FLYING.consumeClick() && ElytraControlConfig.ALLOW_FLYING.getValue()) {
             shouldDisableFlying = !shouldDisableFlying;
 
-            if (ElytraControlConfig.DISABLE_NOTIFICATION.getValue())
+            if (ElytraControlConfig.DISABLE_FLY_NOTIFICATION.getValue())
                 player.displayClientMessage(
                         CommonComponents.optionStatus(Component.translatable("notification.elytracontrol.disableFlying"), shouldDisableFlying), true
                 );

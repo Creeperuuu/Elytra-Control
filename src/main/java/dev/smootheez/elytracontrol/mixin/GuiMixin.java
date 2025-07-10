@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.callback.*;
 
 @Mixin(Gui.class)
 public abstract class GuiMixin {
-    @Inject(method = "render", at = @At("TAIL") )
+    @Inject(method = "render", at = @At("HEAD") )
     private void onRenderHud(GuiGraphics guiGraphics, float f, CallbackInfo ci) {
         GameHudHandler.onRenderHud(guiGraphics);
     }
