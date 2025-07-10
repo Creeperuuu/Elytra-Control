@@ -19,8 +19,8 @@
     "client": [
       "dev.smootheez.elytracontrol.ElytraControl"
     ],
-    "modmenu" : [
-      "dev.smootheez.elytracontrol.config.ModMenuApiImpl"
+    "scl" : [
+      "dev.smootheez.elytracontrol.config.ElytraControlConfig"
     ]
   },
   "mixins": [
@@ -28,7 +28,6 @@
   ],
   "depends": {
     "fabricloader": ">=${loader_version}",
-    "fabric": "*",
     "minecraft": ">=${minecraft_version}",
     "scl": ">=${scl_version}"
   }

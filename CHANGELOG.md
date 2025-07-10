@@ -1,1 +1,3 @@
-- Updated from 1.21.5 into 1.21.6
+- Add keybind for stop elytra flight
+- Add keybind to start elytra flight
+- New setting to change the overlay position

@@ -1,32 +1,48 @@
 {
-  "key.elytracontrol.elytraToggle": "Toggle Elytra",
-  "key.elytracontrol.easyFlightToggle": "Toggle Easy Flight",
+  "key.elytracontrol.stopFlying": "Stop Flying",
+  "key.elytracontrol.startFlying": "Start Flying",
+  "key.elytracontrol.disableFlying": "Disable Flying",
+  "key.elytracontrol.easyFly": "Easy Fly",
+  "key.categories.elytracontrol": "Elytra Control",
 
-  "message.elytracontrol.toggleElytraLock": "Toggle Elytra",
-  "message.elytracontrol.toggleEasyFlight": "Toggle Easy Flight",
+  "notification.elytracontrol.disableFlying": "Disable Flying",
+  "notification.elytracontrol.easyFly": "Easy Fly",
 
-  "key.category.elytracontrol": "Elytra Control",
+  "config.screen.elytracontrol.title": "Elytra Control Config",
 
-  "options.elytracontrol.elytraCancel": "Elytra Cancel",
-  "options.elytracontrol.elytraLock": "Elytra Lock",
-  "options.elytracontrol.elytraLockMessage": "Show Elytra Lock Message",
-  "options.elytracontrol.easyFlight": "Easy Flight",
-  "options.elytracontrol.easyFlightMessage": "Show Easy Flight Message",
-  "options.elytracontrol.iconLockMode": "Icon Lock Mode",
-  "options.elytracontrol.iconLockMode.none": "None",
-  "options.elytracontrol.iconLockMode.iconOnly": "Icon Only",
-  "options.elytracontrol.iconLockMode.textOnly": "Text Only",
-  "options.elytracontrol.iconLockMode.iconText": "Icon and Text",
-  "options.elytracontrol.pitchUpSpeed": "Ajust Pitch Up Speed",
-  "options.elytracontrol.pitchDownSpeed": "Ajust Pitch Down Speed",
+  "overlay.elytracontrol.disableText": "Disable Flying",
 
-  "elytracontrol.title": "Elytra Control Config",
+  "config.option.elytracontrol.lockIconMode.textOnly": "Text Only",
+  "config.option.elytracontrol.lockIconMode.iconText": "Text and Icon",
+  "config.option.elytracontrol.lockIconMode.iconOnly": "Icon Only",
+  "config.option.elytracontrol.lockIconMode.none": "None",
 
-  "options.elytracontrol.elytraCancel.description": "Whether allowed to stop flying in mid air or not",
-  "options.elytracontrol.elytraLock.description": "Enable or Disable elytra lock feature",
-  "options.elytracontrol.easyFlight.description": "Make elytra to start flying easier, with just right click while holding fireworks (right hand/left hand)",
-  "options.elytracontrol.elytraLockMessage.description": "Turn On/Off overlay message for Elytra Lock",
-  "options.elytracontrol.easyFlightMessage.description": "Turn On/Off overlay message for Easy Flight",
+  "config.option.elytracontrol.overlayPosition.topLeft": "Top Left",
+  "config.option.elytracontrol.overlayPosition.topRight": "Top Right",
+  "config.option.elytracontrol.overlayPosition.bottomLeft": "Bottom Left",
+  "config.option.elytracontrol.overlayPosition.bottomRight": "Bottom Right",
+  "config.option.elytracontrol.overlayPosition.topMiddle": "Top Middle",
+  "config.option.elytracontrol.overlayPosition.rightMiddle": "Right Middle",
+  "config.option.elytracontrol.overlayPosition.leftMiddle": "Left Middle",
 
-  "notifier.elytracontrol.toggleElytraLock": "Elytra Locked!"
+  "config.option.elytracontrol.defaultElytraControl": "Default Elytra Control",
+  "config.option.elytracontrol.defaultElytraControl.description": "Should disable the default elytra control?",
+
+  "config.option.elytracontrol.allowFlying": "Allow Flying",
+  "config.option.elytracontrol.allowFlying.description": "Should allow player to fly using elytra?",
+
+  "config.option.elytracontrol.easyFlyNotification": "Easy Fly Notification",
+  "config.option.elytracontrol.easyFlyNotification.description": "Should display a notification when easy fly is enabled/disabled?",
+
+  "config.option.elytracontrol.easyFly": "Easy Fly",
+  "config.option.elytracontrol.easyFly.description": "Should allow player to fly using elytra easily?",
+
+  "config.option.elytracontrol.disableFlyNotification": "Disable Fly Notification",
+  "config.option.elytracontrol.disableFlyNotification.description": "Should display a notification when disable fly is enabled/disabled?",
+
+  "config.option.elytracontrol.lockIconMode": "Lock Icon Mode",
+  "config.option.elytracontrol.lockIconMode.description": "Switch between text only, text and icon, icon only or none",
+
+  "config.option.elytracontrol.overlayPosition": "Overlay Positoin",
+  "config.option.elytracontrol.overlayPosition.description": "Change the position of the overlay"
 }
