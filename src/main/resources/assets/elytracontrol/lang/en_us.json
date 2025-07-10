@@ -10,5 +10,18 @@
 
   "config.screen.elytracontrol.title": "Elytra Control Config",
 
-  "overlay.elytracontrol.disableText": "Disable Flying"
+  "overlay.elytracontrol.disableText": "Disable Flying",
+
+  "config.option.elytracontrol.lockIconMode.textOnly": "Text Only",
+  "config.option.elytracontrol.lockIconMode.iconText": "Text and Icon",
+  "config.option.elytracontrol.lockIconMode.iconOnly": "Icon Only",
+  "config.option.elytracontrol.lockIconMode.none": "None",
+
+  "config.option.elytracontrol.overlayPosition.topLeft": "Top Left",
+  "config.option.elytracontrol.overlayPosition.topRight": "Top Right",
+  "config.option.elytracontrol.overlayPosition.bottomLeft": "Bottom Left",
+  "config.option.elytracontrol.overlayPosition.bottomRight": "Bottom Right",
+  "config.option.elytracontrol.overlayPosition.topMiddle": "Top Middle",
+  "config.option.elytracontrol.overlayPosition.rightMiddle": "Right Middle",
+  "config.option.elytracontrol.overlayPosition.leftMiddle": "Left Middle"
 }

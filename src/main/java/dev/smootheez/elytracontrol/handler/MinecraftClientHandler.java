@@ -75,7 +75,7 @@ public class MinecraftClientHandler {
         Random random = new Random();
         int randomNumber = random.nextInt(3) + 1;
 
-        if ((options.keyJump.consumeClick() && elytraTime > randomNumber) || shouldDisableFlying && isPlayerFlying) {
+        if ((options.keyJump.consumeClick() && elytraTime > randomNumber && ElytraControlConfig.DEFAULT_ELTRA_CONTROL.getValue() && isPlayerFlying) || shouldDisableFlying) {
             player.stopFallFlying();
             sendStartFlyingPacket(player);
         }
