@@ -8,5 +8,7 @@
   "notification.elytracontrol.disableFlying": "Disable Flying",
   "notification.elytracontrol.easyFly": "Easy Fly",
 
-  "config.screen.elytracontrol.title": "Elytra Control Config"
+  "config.screen.elytracontrol.title": "Elytra Control Config",
+
+  "overlay.elytracontrol.disableText": "Disable Flying"
 }

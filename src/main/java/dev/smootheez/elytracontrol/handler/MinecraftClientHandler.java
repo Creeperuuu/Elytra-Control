@@ -70,15 +70,17 @@ public class MinecraftClientHandler {
 
         if (player == null || gameMode == null) return;
 
+        var isPlayerFlying = player.isFallFlying();
+
         Random random = new Random();
         int randomNumber = random.nextInt(3) + 1;
 
-        if (options.keyJump.consumeClick() && player.isFallFlying() && elytraTime > randomNumber) {
+        if ((options.keyJump.consumeClick() && elytraTime > randomNumber) || shouldDisableFlying && isPlayerFlying) {
             player.stopFallFlying();
             sendStartFlyingPacket(player);
         }
 
-        if (player.isFallFlying() && !options.keyJump.isDown())
+        if (isPlayerFlying && !options.keyJump.isDown())
             elytraTime = (elytraTime + 1) % 1000;
         else elytraTime = 0;
 
