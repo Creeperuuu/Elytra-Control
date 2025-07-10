@@ -24,6 +24,5 @@ public class KeyBindsRegistry {
             InputConstants.KEY_V,
             KEYBIND_CATEGORY
     );
-
 }
 

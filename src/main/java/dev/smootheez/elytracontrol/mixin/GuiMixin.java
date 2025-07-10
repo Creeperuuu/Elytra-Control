@@ -14,7 +14,7 @@ public abstract class GuiMixin {
 
     @Inject(method = "render", at = @At("TAIL") )
     private void onRenderHud(GuiGraphics guiGraphics, float f, CallbackInfo ci) {
-        String text = "Elytra Control";
+        String text = "Developer Mode";
         guiGraphics.drawString(
                 this.getFont(),
                 Component.literal(text),
