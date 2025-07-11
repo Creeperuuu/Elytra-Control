@@ -31,7 +31,9 @@ dependencies {
 
 //    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 //    modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
-    modImplementation "com.github.smootheez:scl:${project.scl_version}"
+    modImplementation ("com.github.smootheez:scl:${project.scl_version}") {
+        exclude group: "net.fabricmc.fabric-api", module: "fabric-api"
+    }
 }
 
 processResources{
