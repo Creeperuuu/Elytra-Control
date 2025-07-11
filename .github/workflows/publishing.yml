@@ -50,13 +50,11 @@ jobs:
         run: |
           JAVA_VERSION=$(grep "java_version" gradle.properties | cut -d'=' -f2 | tr -d ' ')
           MOD_VERSION=$(grep "mod_version" gradle.properties | cut -d'=' -f2 | tr -d ' ')
-          FABRIC_VERSION=$(grep "fabric_version" gradle.properties | cut -d'=' -f2 | tr -d ' ')
           SCL_VERSION=$(grep "scl_version" gradle.properties | cut -d'=' -f2 | tr -d ' ')
           MOD_NAME=$(grep "mod_name" gradle.properties | cut -d'=' -f2- | sed 's/^ //')
           
           echo "java_version=$JAVA_VERSION" >> $GITHUB_OUTPUT
           echo "mod_version=$MOD_VERSION" >> $GITHUB_OUTPUT
-          echo "fabric_version=$FABRIC_VERSION" >> $GITHUB_OUTPUT
           echo "scl_version=$SCL_VERSION" >> $GITHUB_OUTPUT
           echo "mod_name=$MOD_NAME" >> $GITHUB_OUTPUT
 
@@ -90,9 +88,8 @@ jobs:
           changelog: ${{ github.event.release.body }}
           dependencies: |
             scl@${{ steps.properties.outputs.scl_version }}(required){modrinth:zLVNfWvA}{curseforge:1107934}#(ignore:github)
-            fabric@${{ steps.properties.outputs.fabric_version }}(required){modrinth:P7dR8mSH}{curseforge:306612}#(ignore:github)
 
           loaders: fabric
           game-versions: |
-            1.21.5
+            1.20.1
           java: ${{ steps.properties.outputs.java_version }}
