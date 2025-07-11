@@ -18,10 +18,16 @@ public class KeyBindsRegistry {
             InputConstants.UNKNOWN.getValue(),
             KEYBIND_CATEGORY
     );
-    public static final KeyMapping DISABLE_FLYING = new KeyMapping(
-            "key.elytracontrol.disableFlying",
+    public static final KeyMapping DISABLE_FLYING_TOGGLE = new KeyMapping(
+            "key.elytracontrol.disableFlyingToggle",
             InputConstants.Type.KEYSYM,
             InputConstants.KEY_V,
+            KEYBIND_CATEGORY
+    );
+    public static final KeyMapping EASY_FLY_TOGGLE = new KeyMapping(
+            "key.elytracontrol.easyFlyToggle",
+            InputConstants.Type.KEYSYM,
+            InputConstants.UNKNOWN.getValue(),
             KEYBIND_CATEGORY
     );
     public static final KeyMapping EASY_FLY = new KeyMapping(

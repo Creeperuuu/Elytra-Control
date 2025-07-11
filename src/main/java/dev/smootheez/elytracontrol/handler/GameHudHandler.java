@@ -59,6 +59,8 @@ public class GameHudHandler {
                     case ICON_ONLY:
                         iconX = centerX - iconSize / 2;
                         break;
+                    case NONE:
+                        break;
                 }
                 break;
             case TOP_RIGHT:
@@ -72,6 +74,8 @@ public class GameHudHandler {
                         break;
                     case ICON_ONLY:
                         iconX = screenWidth - iconSize - baseX;
+                        break;
+                    case NONE:
                         break;
                 }
                 break;
@@ -87,7 +91,7 @@ public class GameHudHandler {
                         textX = screenWidth - textWidth - baseX;
                         textY = centerY - font.lineHeight / 2;
                         break;
-                    case ICON_ONLY:
+                    case ICON_ONLY, NONE:
                         break;
                 }
                 break;
@@ -103,7 +107,7 @@ public class GameHudHandler {
                         textX = screenWidth - textWidth - baseX;
                         textY = screenHeight - baseY - font.lineHeight;
                         break;
-                    case ICON_ONLY:
+                    case ICON_ONLY, NONE:
                         break;
                 }
                 break;
@@ -117,7 +121,7 @@ public class GameHudHandler {
                     case TEXT_ONLY:
                         textY = screenHeight - baseY - font.lineHeight;
                         break;
-                    case ICON_ONLY:
+                    case ICON_ONLY, NONE:
                         break;
                 }
                 break;
@@ -131,7 +135,7 @@ public class GameHudHandler {
                     case TEXT_ONLY:
                         textY = centerY - font.lineHeight / 2;
                         break;
-                    case ICON_ONLY:
+                    case ICON_ONLY, NONE:
                         break;
                 }
                 break;

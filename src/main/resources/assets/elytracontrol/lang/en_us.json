@@ -1,9 +1,10 @@
 {
   "key.elytracontrol.stopFlying": "Stop Flying",
   "key.elytracontrol.startFlying": "Start Flying",
-  "key.elytracontrol.disableFlying": "Disable Flying",
+  "key.elytracontrol.disableFlyingToggle": "Disable Flying Toggle",
   "key.elytracontrol.easyFly": "Easy Fly",
   "key.categories.elytracontrol": "Elytra Control",
+  "key.elytracontrol.easyFlyToggle": "Easy Fly Toggle",
 
   "notification.elytracontrol.disableFlying": "Disable Flying",
   "notification.elytracontrol.easyFly": "Easy Fly",

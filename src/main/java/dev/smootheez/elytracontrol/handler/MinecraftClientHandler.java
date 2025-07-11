@@ -56,7 +56,7 @@ public class MinecraftClientHandler {
             }
         }
 
-        while (KeyBindsRegistry.DISABLE_FLYING.consumeClick() && ElytraControlConfig.ALLOW_FLYING.getValue()) {
+        while (KeyBindsRegistry.DISABLE_FLYING_TOGGLE.consumeClick() && ElytraControlConfig.ALLOW_FLYING.getValue()) {
             shouldDisableFlying = !shouldDisableFlying;
 
             if (ElytraControlConfig.DISABLE_FLY_NOTIFICATION.getValue())
@@ -64,7 +64,7 @@ public class MinecraftClientHandler {
                         CommonComponents.optionStatus(Component.translatable("notification.elytracontrol.disableFlying"), shouldDisableFlying), true
                 );
         }
-        while (KeyBindsRegistry.EASY_FLY.consumeClick() && ElytraControlConfig.EASY_FLY.getValue()) {
+        while (KeyBindsRegistry.EASY_FLY_TOGGLE.consumeClick() && ElytraControlConfig.EASY_FLY.getValue()) {
             shouldEasyFly = !shouldEasyFly;
 
             if (ElytraControlConfig.EASY_FLY_NOTIFICATION.getValue())
@@ -143,7 +143,7 @@ public class MinecraftClientHandler {
         var player = client.player;
 
         return player != null
-                && client.options.keyUse.isDown()
+                && ((client.options.keyUse.isDown() && KeyBindsRegistry.EASY_FLY.isUnbound()) || KeyBindsRegistry.EASY_FLY.consumeClick())
                 && player.onGround()
                 && player.getItemBySlot(EquipmentSlot.CHEST).is(Items.ELYTRA)
                 && isCorsshairClear()
