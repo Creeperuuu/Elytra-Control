@@ -12,8 +12,8 @@ import net.minecraft.resources.*;
 public class GameHudHandler {
     private static final Minecraft client = Minecraft.getInstance();
 
-    private static final ResourceLocation elytraIcon = ResourceLocation.withDefaultNamespace("textures/item/elytra.png");
-    private static final ResourceLocation crossIcon = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "textures/gui/cross_icon.png");
+    private static final ResourceLocation ELYTRA_ICON = ResourceLocation.withDefaultNamespace("textures/item/elytra.png");
+    private static final ResourceLocation CROSS_ICON = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "textures/gui/cross_icon.png");
 
     public static void onRenderHud(GuiGraphics guiGraphics) {
         if (MinecraftClientHandler.isShouldDisableFlying())
@@ -145,8 +145,8 @@ public class GameHudHandler {
         var textColor = 0xFF1313;
 
         if (lockIconMode == LockIconMode.ICON_TEXT || lockIconMode == LockIconMode.ICON_ONLY) {
-            guiGraphics.blitSprite(RenderType::guiTextured, elytraIcon, iconX, iconY, 0, 0, iconSize, iconSize, iconSize, iconSize);
-            guiGraphics.blitSprite(RenderType::guiTextured, crossIcon, iconX, iconY, 0, 0, iconSize, iconSize, iconSize, iconSize);
+            guiGraphics.blit(RenderType::guiTextured, ELYTRA_ICON, iconX, iconY, 0, 0, iconSize, iconSize, iconSize, iconSize);
+            guiGraphics.blit(RenderType::guiTextured, CROSS_ICON, iconX, iconY, 0, 0, iconSize, iconSize, iconSize, iconSize);
         }
         if (lockIconMode == LockIconMode.ICON_TEXT || lockIconMode == LockIconMode.TEXT_ONLY) {
             guiGraphics.drawString(
