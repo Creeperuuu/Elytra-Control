@@ -28,7 +28,9 @@ dependencies {
     mappings loom.officialMojangMappings()
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
-    modImplementation "com.github.Smootheez:scl:${project.scl_version}"
+    modImplementation ("com.github.Smootheez:scl:${project.scl_version}") {
+        exclude group: "net.fabricmc.fabric-api", module: "fabric-api"
+    }
 }
 
 processResources{

@@ -11,8 +11,8 @@ import net.minecraft.resources.*;
 public class GameHudHandler {
     private static final Minecraft client = Minecraft.getInstance();
 
-    private static final ResourceLocation elytraIcon = new ResourceLocation("textures/item/elytra.png");
-    private static final ResourceLocation crossIcon = new ResourceLocation(Constants.MOD_ID, "textures/gui/cross_icon.png");
+    private static final ResourceLocation elytraIcon = ResourceLocation.withDefaultNamespace("textures/item/elytra.png");
+    private static final ResourceLocation crossIcon = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "textures/gui/cross_icon.png");
 
     public static void onRenderHud(GuiGraphics guiGraphics) {
         if (MinecraftClientHandler.isShouldDisableFlying())
