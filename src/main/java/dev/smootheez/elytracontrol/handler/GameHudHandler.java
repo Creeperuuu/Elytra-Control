@@ -5,6 +5,7 @@ import dev.smootheez.elytracontrol.config.*;
 import dev.smootheez.elytracontrol.config.option.*;
 import net.minecraft.client.*;
 import net.minecraft.client.gui.*;
+import net.minecraft.client.renderer.*;
 import net.minecraft.network.chat.*;
 import net.minecraft.resources.*;
 
@@ -144,8 +145,8 @@ public class GameHudHandler {
         var textColor = 0xFF1313;
 
         if (lockIconMode == LockIconMode.ICON_TEXT || lockIconMode == LockIconMode.ICON_ONLY) {
-            guiGraphics.blit(elytraIcon, iconX, iconY, 0, 0, iconSize, iconSize, iconSize, iconSize);
-            guiGraphics.blit(crossIcon, iconX, iconY, 0, 0, iconSize, iconSize, iconSize, iconSize);
+            guiGraphics.blitSprite(RenderType::guiTextured, elytraIcon, iconX, iconY, 0, 0, iconSize, iconSize, iconSize, iconSize);
+            guiGraphics.blitSprite(RenderType::guiTextured, crossIcon, iconX, iconY, 0, 0, iconSize, iconSize, iconSize, iconSize);
         }
         if (lockIconMode == LockIconMode.ICON_TEXT || lockIconMode == LockIconMode.TEXT_ONLY) {
             guiGraphics.drawString(
