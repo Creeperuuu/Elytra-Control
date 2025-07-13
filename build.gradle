@@ -1,6 +1,5 @@
 plugins {
     id 'fabric-loom' version "${loom_version}"
-    id 'maven-publish'
 }
 
 version = project.mod_version
@@ -29,7 +28,7 @@ dependencies {
     mappings loom.officialMojangMappings()
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
-    modImplementation "com.github.smootheez:scl:${project.scl_version}"
+    modImplementation "com.github.Smootheez:scl:${project.scl_version}"
 }
 
 processResources{
