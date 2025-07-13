@@ -23,6 +23,7 @@ public class MinecraftClientHandler {
     private static boolean shouldEasyFly = true;
     private ActionStep actionStep = ActionStep.START_MOMENTUM;
     private boolean startEasyFly = false;
+    private final Random random = new Random();
 
     public MinecraftClientHandler(Minecraft client) {
         this.client = client;
@@ -75,6 +76,8 @@ public class MinecraftClientHandler {
     }
 
     public void onEndClientTick() {
+        if (client.screen != null) return;
+
         var player = client.player;
         var options = client.options;
         var gameMode = client.gameMode;
@@ -83,7 +86,6 @@ public class MinecraftClientHandler {
 
         var isPlayerFlying = player.isFallFlying();
 
-        Random random = new Random();
         int randomNumber = random.nextInt(3) + 1;
 
         if ((options.keyJump.consumeClick() && elytraTime > randomNumber && ElytraControlConfig.DEFAULT_ELTRA_CONTROL.getValue() && isPlayerFlying) || shouldDisableFlying) {
