@@ -145,8 +145,8 @@ public class GameHudHandler {
         var textColor = 0xFF1313;
 
         if (lockIconMode == LockIconMode.ICON_TEXT || lockIconMode == LockIconMode.ICON_ONLY) {
-            guiGraphics.blit(RenderType::guiTextured, ELYTRA_ICON, iconX, iconY, 0, 0, iconSize, iconSize, iconSize, iconSize);
-            guiGraphics.blit(RenderType::guiTextured, CROSS_ICON, iconX, iconY, 0, 0, iconSize, iconSize, iconSize, iconSize);
+            guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ELYTRA_ICON, iconX, iconY, 0, 0, iconSize, iconSize, iconSize, iconSize);
+            guiGraphics.blit(RenderPipelines.GUI_TEXTURED, CROSS_ICON, iconX, iconY, 0, 0, iconSize, iconSize, iconSize, iconSize);
         }
         if (lockIconMode == LockIconMode.ICON_TEXT || lockIconMode == LockIconMode.TEXT_ONLY) {
             guiGraphics.drawString(
