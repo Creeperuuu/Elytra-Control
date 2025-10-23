@@ -15,10 +15,12 @@ public abstract class LocalPlayerMixin {
                     target = "Lnet/minecraft/client/player/LocalPlayer;tryToStartFallFlying()Z")
     )
     private boolean disableElytra(LocalPlayer instance) {
-        if (Boolean.TRUE.equals(ConfigManager.getConfig(ElytraControlConfig.class).getDisableElytra().getValue())) {
-            DebugMode.sendLoggerInfo("[Mixin:LocalPlayer] Blocked tryToStartFallFlying - this should log every time you try to activate elytra");
-            return false;
+        if (Boolean.FALSE.equals(ConfigManager.getConfig(ElytraControlConfig.class).getDisableElytra().getValue())) {
+            DebugMode.sendLoggerInfo("Try to start fall flying normally");
+            return instance.tryToStartFallFlying();
         }
-        return true;
+
+        DebugMode.sendLoggerInfo("Redirecting fall flying because Elytra is disabled");
+        return false;
     }
 }
