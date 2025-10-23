@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "${modid}",
+  "version": "${modVersion}",
+  "name": "${modName}",
+  "description": "${modDescription}",
+  "license": "${modLicense}",
+  "authors": [
+    "Smootheez"
+  ],
+  "contact": {
+    "homepage": "https://github.com/Smootheez/Elytra-Control",
+    "sources": "https://github.com/Smootheez/Elytra-Control",
+    "issues": "https://github.com/Smootheez/Elytra-Control/issues"
+  },
+  "environment": "client",
+  "entrypoints": {
+    "main": [
+      "io.github.smootheez.elytracontrol.ElytraControl"
+    ],
+    "client": [
+      "io.github.smootheez.elytracontrol.ElytraControlClient"
+    ],
+    "smoothiezapi": [
+      "io.github.smootheez.elytracontrol.config.ElytraControlConfig"
+    ]
+  },
+  "mixins": [
+    {
+      "config": "elytracontrol.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loaderVersion}",
+    "minecraft": ">=${minecraftVersion}",
+    "smoothiezapi": ">=${smoothiezApiVersion}",
+    "fabric": ">=${fabricVersion}"
+  }
+}
