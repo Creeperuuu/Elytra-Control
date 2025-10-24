@@ -8,7 +8,7 @@ import net.minecraft.client.*;
 import net.minecraft.resources.*;
 
 @Environment(EnvType.CLIENT)
-public class KeyMappingRegistry {
+public final class KeyMappingRegistry {
     private KeyMappingRegistry() {}
 
     private static final KeyMapping.Category ELYTRA_CONTROL_CATEGORY = KeyMapping.Category.register(

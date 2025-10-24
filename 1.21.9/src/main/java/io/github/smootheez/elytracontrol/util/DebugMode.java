@@ -3,7 +3,7 @@ package io.github.smootheez.elytracontrol.util;
 import io.github.smootheez.elytracontrol.config.*;
 import io.github.smootheez.smoothiezapi.config.*;
 
-public class DebugMode {
+public final class DebugMode {
     private DebugMode() {}
 
     public static void sendLoggerInfo(String message) {

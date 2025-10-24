@@ -16,7 +16,7 @@ repositories {
 
 dependencies {
     // mod api dependencies
-    modApi("net.fabricmc.fabric-api:fabric-api:${fabricVersion}")
+    modApi("net.fabricmc.fabric-api:fabric-api:${fabricVersion}") // already included in smoothiezapi, but still add for consistency
     modApi("io.github.smootheez:smoothiezapi:${smoothiezApiVersion}")
 
     // compile and runtime only dependencies
