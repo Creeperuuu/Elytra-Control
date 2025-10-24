@@ -7,8 +7,6 @@
 - **Cancel Fly** – Instantly cancels midair flight for smooth landings.
 - **Easy Fly** – Makes Elytra takeoff easier and more accessible.
 
----
-
 ## 🖼️ Preview
 
 Below are some visual previews of the mod in action.
@@ -26,8 +24,6 @@ Additionally, you can adjust the overlay position anywhere on the screen.
 
 ![Disable Fly Preview](https://raw.githubusercontent.com/Smootheez/Elytra-Control/refs/heads/dev/assets/disable_elytra_preview.gif)
 
----
-
 ### 🛑 Cancel Fly
 
 Cancel your Elytra flight midair by tapping the jump key—perfect for safe landings or quick stops.  
@@ -36,8 +32,6 @@ Keybinds are fully customizable:
 - Or bind your own custom key
 
 ![Cancel Fly Preview](https://raw.githubusercontent.com/Smootheez/Elytra-Control/refs/heads/dev/assets/cancel_fly_action_preview.gif)
-
----
 
 ### 🚀 Easy Fly
 
@@ -53,29 +47,21 @@ Note: The keybind is unassigned by default—you'll need to bind it manually.
 
 ![Disable Easy Fly Preview](https://raw.githubusercontent.com/Smootheez/Elytra-Control/refs/heads/dev/assets/disable_easy_fly_preview.gif)
 
----
-
 ## ⚙️ Configuration
 
 You can configure all features easily:
 - In-game via the config menu *(requires ModMenu)*
 - Manually by editing the config file
 
----
-
 ## 📥 Download
 
 - **[Modrinth](https://modrinth.com/mod/elytra-control)**
 - **[CurseForge](https://www.curseforge.com/minecraft/mc-mods/elytra-control)**
 
----
-
 ## 🐞 Issue Tracker
 
 Found a bug or have a feature request?  
 Please report it here: [**GitHub Issues**](https://github.com/Smootheez/Elytra-Control/issues)
-
----
 
 ## ☕ Support Me
 
