@@ -17,11 +17,11 @@ import net.minecraft.util.*;
 public class HandleHudOverlay implements HudElement {
     private static final ResourceLocation ELYTRA_ICON = ResourceLocation.withDefaultNamespace("textures/item/elytra.png");
     private static final ResourceLocation CROSS_ICON = ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "textures/gui/cross_icon.png");
+    private final ElytraControlConfig config = ConfigManager.getConfig(ElytraControlConfig.class);
 
     @Override
     public void render(GuiGraphics context, DeltaTracker tickCounter) {
         if (!HandleElytraControl.isShouldDisableElytra()) return;
-        ElytraControlConfig config = ConfigManager.getConfig(ElytraControlConfig.class);
         renderOverlay(context, config.getOverlayPosition().getValue(), config.getLockIconMode().getValue());
     }
 
