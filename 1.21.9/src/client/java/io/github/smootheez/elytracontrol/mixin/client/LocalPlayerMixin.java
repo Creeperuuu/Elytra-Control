@@ -1,7 +1,6 @@
 package io.github.smootheez.elytracontrol.mixin.client;
 
 import io.github.smootheez.elytracontrol.config.*;
-import io.github.smootheez.elytracontrol.handler.*;
 import io.github.smootheez.elytracontrol.util.*;
 import io.github.smootheez.smoothiezapi.config.*;
 import net.fabricmc.api.*;
@@ -16,12 +15,12 @@ public abstract class LocalPlayerMixin {
             at = @At(value = "INVOKE", target = "Lnet/minecraft/client/player/LocalPlayer;tryToStartFallFlying()Z"))
     private boolean disableElytra(LocalPlayer instance) {
         if (Boolean.TRUE.equals(ConfigManager.getConfig(ElytraControlConfig.class).getDisableElytra().getValue())
-                || HandleElytraControl.isShouldDisableElytra()) {
+                || ElytraControlUtils.isShouldDisableElytra()) {
             DebugMode.sendLoggerInfo("Redirecting fall flying because Elytra is disabled");
-            return false;
+            return false; // disable fall flying when Elytra is disabled
         }
 
         DebugMode.sendLoggerInfo("Try to start fall flying normally");
-        return instance.tryToStartFallFlying();
+        return instance.tryToStartFallFlying(); // otherwise proceed with default behavior
     }
 }

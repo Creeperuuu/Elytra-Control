@@ -21,7 +21,7 @@ public class HandleHudOverlay implements HudElement {
 
     @Override
     public void render(GuiGraphics context, DeltaTracker tickCounter) {
-        if (!HandleElytraControl.isShouldDisableElytra()) return;
+        if (!ElytraControlUtils.isShouldDisableElytra()) return;
         renderOverlay(context, config.getOverlayPosition().getValue(), config.getLockIconMode().getValue());
     }
 

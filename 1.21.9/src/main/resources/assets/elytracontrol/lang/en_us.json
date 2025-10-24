@@ -11,8 +11,13 @@
   "config.widget.elytracontrol.disable_elytra_notification": "Disable Elytra Notification",
   "config.widget.elytracontrol.disable_elytra_notification.description": "If enabled, a notification will be displayed when you disable/enable the elytra.",
 
-  "config.widget.elytracontrol.elytra_control_default": "Elytra Control Default",
-  "config.widget.elytracontrol.elytra_control_default.description": "Should disable the default elytra control?",
+  "config.widget.elytracontrol.elytra_control_allow_default_key": "Allow Elytra Control Default Key",
+  "config.widget.elytracontrol.elytra_control_allow_default_key.description":"If enabled, the default jump key will stop elytra flight.",
+
+  "config.widget.elytracontrol.easy_fly": "Easy Fly",
+  "config.widget.elytracontrol.easy_fly.description": "If enabled, you can easily start flying with an elytra and a firework rocket by pressing the assigned key.",
+  "config.widget.elytracontrol.easy_fly_allow_default_key": "Allow Easy Fly Default Key",
+  "config.widget.elytracontrol.easy_fly_allow_default_key.description": "If enabled, the default use key will trigger easy fly.",
 
   "config.widget.elytracontrol.lock_icon_mode": "Lock Icon Mode",
   "config.widget.elytracontrol.lock_icon_mode.icon_text": "Icon + Text",
@@ -31,6 +36,7 @@
 
   "key.category.elytracontrol.elytracontrol": "Elytra Control",
   "key.elytracontrol.disable_elytra": "Disable Elytra",
-  "key.eltracontrol.start_flying": "Start Flying",
-  "key.eltracontrol.stop_flying": "Stop Flying"
+  "key.elytracontrol.start_flying": "Start Flying",
+  "key.elytracontrol.stop_flying": "Stop Flying",
+  "key.elytracontrol.easy_fly": "Easy Fly"
 }

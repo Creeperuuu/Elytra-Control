@@ -33,10 +33,17 @@ public class KeyMappingRegistry {
             ELYTRA_CONTROL_CATEGORY
     );
 
+    public static final KeyMapping EASY_FLY = new KeyMapping(
+            "key." + Constants.MOD_ID + ".easy_fly",
+            InputConstants.UNKNOWN.getValue(),
+            ELYTRA_CONTROL_CATEGORY
+    );
+
     public static void registerKeyMappings() {
         Constants.LOGGER.info("Registering Key Mappings for " + Constants.MOD_NAME + "(" + Constants.MOD_ID + ")...");
         KeyBindingHelper.registerKeyBinding(STOP_FLYING);
         KeyBindingHelper.registerKeyBinding(START_FLYING);
         KeyBindingHelper.registerKeyBinding(DISABLE_ELYTRA);
+        KeyBindingHelper.registerKeyBinding(EASY_FLY);
     }
 }

@@ -35,9 +35,6 @@ public class HandleElytraControl implements ClientTickEvents.EndTick {
     /** Random generator for probabilistic behaviors (e.g., flight interruption). */
     private final Random random = new Random();
 
-    /** Flag to determine if Elytra should be disabled manually by the player. */
-    private static boolean shouldDisableElytra = false;
-
     /**
      * Called every client tick (after normal game tick).
      * Handles Elytra flight logic, input detection, and configuration checks.
@@ -74,7 +71,8 @@ public class HandleElytraControl implements ClientTickEvents.EndTick {
         // Check if the "Disable Elytra" keybind was pressed
         while (KeyMappingRegistry.DISABLE_ELYTRA.consumeClick()) {
             // Toggle disable flag
-            shouldDisableElytra = !shouldDisableElytra;
+            var shouldDisableElytra = !ElytraControlUtils.isShouldDisableElytra();
+            ElytraControlUtils.setShouldDisableElytra(shouldDisableElytra);
 
             // If notification config is enabled, show message on screen
             if (Boolean.TRUE.equals(CONFIG.getDisableElytraNotification().getValue())) {
@@ -86,11 +84,6 @@ public class HandleElytraControl implements ClientTickEvents.EndTick {
                         Component.translatable("notification." + Constants.MOD_ID + ".disable_elytra"), shouldDisableElytra), true);
             }
         }
-    }
-
-    /** @return current Elytra disable flag (used by other classes). */
-    public static boolean isShouldDisableElytra() {
-        return shouldDisableElytra;
     }
 
     /**
@@ -163,7 +156,7 @@ public class HandleElytraControl implements ClientTickEvents.EndTick {
         int randomNumber = random.nextInt(3) + 1; // random 1–3
         if (options.keyJump.consumeClick()
                 && elytraTime > randomNumber
-                && Boolean.TRUE.equals(CONFIG.getElytraControlDefault().getValue()))
+                && Boolean.TRUE.equals(CONFIG.getElytraControlAllowDefaultKey().getValue()))
             stopFallFlying(clientPlayer, isPlayerFlying);
     }
 
