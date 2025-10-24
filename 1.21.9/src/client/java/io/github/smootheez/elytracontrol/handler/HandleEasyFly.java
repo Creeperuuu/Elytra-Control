@@ -116,6 +116,7 @@ public class HandleEasyFly implements ClientTickEvents.EndTick {
         DebugMode.sendLoggerInfo("[Handle Easy Fly] Starting player flight");
 
         // Send packet to initiate Elytra flight server-side
+        player.startFallFlying();
         player.connection.send(new ServerboundPlayerCommandPacket(
                 player, ServerboundPlayerCommandPacket.Action.START_FALL_FLYING));
 
@@ -132,9 +133,8 @@ public class HandleEasyFly implements ClientTickEvents.EndTick {
     private void handleMomentumAction(LocalPlayer player) {
         DebugMode.sendLoggerInfo("[Handle Easy Fly] Starting player momentum");
 
-        // Add a small vertical lift to simulate jump/boost
         Vec3 deltaMovement = player.getDeltaMovement();
-        player.setDeltaMovement(deltaMovement.x, 0.15, deltaMovement.z);
+        player.setDeltaMovement(deltaMovement.x, config.getUpwardVelocity().getValue(), deltaMovement.z);
 
         // Proceed to Elytra flight start
         actionStep = ActionStep.START_FLYING;

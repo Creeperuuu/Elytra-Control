@@ -14,6 +14,9 @@
   "config.widget.elytracontrol.elytra_control_allow_default_key": "Allow Elytra Control Default Key",
   "config.widget.elytracontrol.elytra_control_allow_default_key.description":"If enabled, the default jump key will stop elytra flight.",
 
+  "config.widget.elytracontrol.upward_velocity": "Upward Velocity",
+  "config.widget.elytracontrol.upward_velocity.description": "The initial upward velocity applied when using Easy Fly. Useful when in multiplayer, use higher value if the easy fly immediately fails.",
+
   "config.widget.elytracontrol.easy_fly": "Easy Fly",
   "config.widget.elytracontrol.easy_fly.description": "If enabled, you can easily start flying with an elytra and a firework rocket by pressing the assigned key.",
   "config.widget.elytracontrol.easy_fly_allow_default_key": "Allow Easy Fly Default Key",

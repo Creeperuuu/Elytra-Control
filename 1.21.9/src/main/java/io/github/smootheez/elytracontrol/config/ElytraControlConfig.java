@@ -19,6 +19,8 @@ public class ElytraControlConfig implements ConfigApi {
     private final BooleanOption easyFly = new BooleanOption("easy_fly", false);
     private final BooleanOption easyFlyAllowDefaultKey = new BooleanOption("easy_fly_allow_default_key", true);
 
+    private final DoubleOption upwardVelocity = new DoubleOption("upward_velocity", 0.15, 0.12, 0.42);
+
     public BooleanOption getDebugMode() {
         return debugMode;
     }
@@ -49,5 +51,9 @@ public class ElytraControlConfig implements ConfigApi {
 
     public BooleanOption getEasyFlyAllowDefaultKey() {
         return easyFlyAllowDefaultKey;
+    }
+
+    public DoubleOption getUpwardVelocity() {
+        return upwardVelocity;
     }
 }
