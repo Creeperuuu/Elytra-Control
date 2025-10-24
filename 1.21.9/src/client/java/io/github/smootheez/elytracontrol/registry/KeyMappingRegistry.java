@@ -29,7 +29,7 @@ public class KeyMappingRegistry {
 
     public static final KeyMapping DISABLE_ELYTRA = new KeyMapping(
             "key." + Constants.MOD_ID + ".disable_elytra",
-            InputConstants.UNKNOWN.getValue(),
+            InputConstants.KEY_V,
             ELYTRA_CONTROL_CATEGORY
     );
 

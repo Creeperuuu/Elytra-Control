@@ -11,5 +11,10 @@
   "config.widget.elytracontrol.disable_elytra_notification.description": "If enabled, a notification will be displayed when you disable/enable the elytra.",
 
   "config.widget.elytracontrol.elytra_control_default": "Elytra Control Default",
-  "config.widget.elytracontrol.elytra_control_default.description": "Should disable the default elytra control?"
+  "config.widget.elytracontrol.elytra_control_default.description": "Should disable the default elytra control?",
+
+  "key.category.elytracontrol.elytracontrol": "Elytra Control",
+  "key.elytracontrol.disable_elytra": "Disable Elytra",
+  "key.eltracontrol.start_flying": "Start Flying",
+  "key.eltracontrol.stop_flying": "Stop Flying"
 }
