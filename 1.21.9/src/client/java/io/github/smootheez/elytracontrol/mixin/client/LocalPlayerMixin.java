@@ -16,7 +16,7 @@ public abstract class LocalPlayerMixin {
             at = @At(value = "INVOKE", target = "Lnet/minecraft/client/player/LocalPlayer;tryToStartFallFlying()Z"))
     private boolean disableElytra(LocalPlayer instance) {
         if (Boolean.TRUE.equals(ConfigManager.getConfig(ElytraControlConfig.class).getDisableElytra().getValue())
-                || HandleEndClientTick.isShouldDisableElytra()) {
+                || HandleElytraControl.isShouldDisableElytra()) {
             DebugMode.sendLoggerInfo("Redirecting fall flying because Elytra is disabled");
             return false;
         }

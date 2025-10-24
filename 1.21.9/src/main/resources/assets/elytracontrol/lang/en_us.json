@@ -1,0 +1,15 @@
+{
+  "notification.elytracontrol.disable_elytra": "Disable Elytra",
+
+  "config.screen.elytracontrol.title": "Elytra Control Config",
+
+  "config.widget.elytracontrol.debug_mode": "Debug Mode",
+
+  "config.widget.elytracontrol.disable_elytra": "Disable Elytra",
+  "config.widget.elytracontrol.disable_elytra.description": "If enabled, you will not be able to start flying with the elytra.",
+  "config.widget.elytracontrol.disable_elytra_notification": "Disable Elytra Notification",
+  "config.widget.elytracontrol.disable_elytra_notification.description": "If enabled, a notification will be displayed when you disable/enable the elytra.",
+
+  "config.widget.elytracontrol.elytra_control_default": "Elytra Control Default",
+  "config.widget.elytracontrol.elytra_control_default.description": "Should disable the default elytra control?"
+}

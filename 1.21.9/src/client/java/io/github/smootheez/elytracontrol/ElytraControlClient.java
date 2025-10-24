@@ -12,6 +12,6 @@ public class ElytraControlClient implements ClientModInitializer {
     public void onInitializeClient() {
         Constants.LOGGER.info("Initializing Client " + Constants.MOD_NAME + "(" + Constants.MOD_ID + ")...");
         KeyMappingRegistry.registerKeyMappings();
-        ClientTickEvents.END_CLIENT_TICK.register(new HandleEndClientTick());
+        ClientTickEvents.END_CLIENT_TICK.register(new HandleElytraControl());
     }
 }
