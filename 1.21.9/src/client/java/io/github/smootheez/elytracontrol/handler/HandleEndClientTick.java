@@ -16,11 +16,14 @@ import java.util.*;
 public class HandleEndClientTick implements ClientTickEvents.EndTick {
     private int elytraTime = 0;
     private final Random random = new Random();
+    private static boolean shouldDisableElytra = false;
 
     @Override
     public void onEndTick(Minecraft client) {
-        LocalPlayer clientPlayer = client.player;
-        Options options = client.options;
+        final LocalPlayer clientPlayer = client.player;
+        final Options options = client.options;
+
+        disableElytra();
 
         if (clientPlayer == null) return;
 
@@ -30,6 +33,20 @@ public class HandleEndClientTick implements ClientTickEvents.EndTick {
         defaultStopFlyingBehavior(options, randomNumber, isPlayerFlying, clientPlayer);
         customStopFlyingBehavior(clientPlayer);
 
+        countElytraTime(isPlayerFlying, options);
+    }
+
+    private static void disableElytra() {
+        while (KeyMappingRegistry.DISABLE_ELYTRA.consumeClick()) {
+            shouldDisableElytra = !shouldDisableElytra;
+        }
+    }
+
+    public static boolean isShouldDisableElytra() {
+        return shouldDisableElytra;
+    }
+
+    private void countElytraTime(boolean isPlayerFlying, Options options) {
         if (isPlayerFlying && !options.keyJump.isDown())
             elytraTime = (elytraTime + 1) % 1000;
         else elytraTime = 0;

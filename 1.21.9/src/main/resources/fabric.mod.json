@@ -2,6 +2,7 @@
   "schemaVersion": 1,
   "id": "${modid}",
   "version": "${modVersion}",
+  "icon": "assets/elytracontrol/icon.png",
   "name": "${modName}",
   "description": "${modDescription}",
   "license": "${modLicense}",

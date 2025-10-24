@@ -27,9 +27,16 @@ public class KeyMappingRegistry {
             ELYTRA_CONTROL_CATEGORY
     );
 
+    public static final KeyMapping DISABLE_ELYTRA = new KeyMapping(
+            "key." + Constants.MOD_ID + ".disable_elytra",
+            InputConstants.UNKNOWN.getValue(),
+            ELYTRA_CONTROL_CATEGORY
+    );
+
     public static void registerKeyMappings() {
         Constants.LOGGER.info("Registering Key Mappings for " + Constants.MOD_NAME + "(" + Constants.MOD_ID + ")...");
         KeyBindingHelper.registerKeyBinding(STOP_FLYING);
         KeyBindingHelper.registerKeyBinding(START_FLYING);
+        KeyBindingHelper.registerKeyBinding(DISABLE_ELYTRA);
     }
 }
