@@ -15,9 +15,11 @@ repositories {
 }
 
 dependencies {
+    // mod api dependencies
     modApi("net.fabricmc.fabric-api:fabric-api:${fabricVersion}")
     modApi("io.github.smootheez:smoothiezapi:${smoothiezApiVersion}")
 
+    // compile and runtime only dependencies
     modCompileOnly("com.terraformersmc:modmenu:${modmenuVersion}")
     modLocalRuntime("com.terraformersmc:modmenu:${modmenuVersion}")
 }

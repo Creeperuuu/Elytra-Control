@@ -30,19 +30,49 @@ public class HandleHudOverlay implements HudElement {
         var screenWidth = guiGraphics.guiWidth();
         var screenHeight = guiGraphics.guiHeight();
 
-        var disableText = "overlay." + Constants.MOD_ID + ".disable_text";
+        var translatableDisableText = Component.translatable("overlay." + Constants.MOD_ID + ".disable_text");
 
         var iconSize = 16;
-        var textWidth = font.width(Component.translatable(disableText));
+        var textWidth = font.width(translatableDisableText);
 
-        var baseX = 3;
-        var baseY = 3;
+        var positions = calculatePositions(position, lockIconMode, screenWidth, screenHeight, iconSize, textWidth, font.lineHeight);
 
-        var iconX = baseX;
-        var iconY = baseY;
+        int textColor = ARGB.color(255, 0xFF, 0x13, 0x13); // full alpha + RGB
 
-        var textX = baseX;
-        var textY = iconY + iconSize / 2 - font.lineHeight / 2;
+        if (lockIconMode == LockIconMode.ICON_TEXT || lockIconMode == LockIconMode.ICON_ONLY) {
+            guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ELYTRA_ICON, positions.iconX(), positions.iconY(), 0, 0, iconSize, iconSize, iconSize, iconSize);
+            guiGraphics.blit(RenderPipelines.GUI_TEXTURED, CROSS_ICON, positions.iconX(), positions.iconY(), 0, 0, iconSize, iconSize, iconSize, iconSize);
+        }
+        if (lockIconMode == LockIconMode.ICON_TEXT || lockIconMode == LockIconMode.TEXT_ONLY) {
+            guiGraphics.drawString(
+                    font,
+                    translatableDisableText,
+                    positions.textX(),
+                    positions.textY(),
+                    textColor,
+                    false
+            );
+        }
+    }
+
+    private record Positions(int iconX, int iconY, int textX, int textY) {
+    }
+
+    private Positions calculatePositions(OverlayPosition position,
+                                         LockIconMode lockIconMode,
+                                         int screenWidth,
+                                         int screenHeight,
+                                         int iconSize,
+                                         int textWidth,
+                                         int lineHeight) {
+        int baseX = 3;
+        int baseY = 3;
+
+        int iconX = baseX;
+        int iconY = baseY;
+
+        int textX = baseX;
+        int textY = iconY + iconSize / 2 - lineHeight / 2;
 
         int centerX = screenWidth / 2;
         int centerY = screenHeight / 2;
@@ -91,11 +121,11 @@ public class HandleHudOverlay implements HudElement {
                 switch (lockIconMode) {
                     case ICON_TEXT:
                         textX = iconX - textWidth - 5;
-                        textY = iconY + iconSize / 2 - font.lineHeight / 2;
+                        textY = iconY + iconSize / 2 - lineHeight / 2;
                         break;
                     case TEXT_ONLY:
                         textX = screenWidth - textWidth - baseX;
-                        textY = centerY - font.lineHeight / 2;
+                        textY = centerY - lineHeight / 2;
                         break;
                     case ICON_ONLY, NONE:
                         break;
@@ -107,11 +137,11 @@ public class HandleHudOverlay implements HudElement {
                 switch (lockIconMode) {
                     case ICON_TEXT:
                         textX = iconX - textWidth - 5;
-                        textY = iconY + iconSize / 2 - font.lineHeight / 2;
+                        textY = iconY + iconSize / 2 - lineHeight / 2;
                         break;
                     case TEXT_ONLY:
                         textX = screenWidth - textWidth - baseX;
-                        textY = screenHeight - baseY - font.lineHeight;
+                        textY = screenHeight - baseY - lineHeight;
                         break;
                     case ICON_ONLY, NONE:
                         break;
@@ -122,10 +152,10 @@ public class HandleHudOverlay implements HudElement {
                 switch (lockIconMode) {
                     case ICON_TEXT:
                         textX = iconX + iconSize + 5;
-                        textY = iconY + iconSize / 2 - font.lineHeight / 2;
+                        textY = iconY + iconSize / 2 - lineHeight / 2;
                         break;
                     case TEXT_ONLY:
-                        textY = screenHeight - baseY - font.lineHeight;
+                        textY = screenHeight - baseY - lineHeight;
                         break;
                     case ICON_ONLY, NONE:
                         break;
@@ -136,31 +166,16 @@ public class HandleHudOverlay implements HudElement {
                 switch (lockIconMode) {
                     case ICON_TEXT:
                         textX = iconX + iconSize + 5;
-                        textY = iconY + iconSize / 2 - font.lineHeight / 2;
+                        textY = iconY + iconSize / 2 - lineHeight / 2;
                         break;
                     case TEXT_ONLY:
-                        textY = centerY - font.lineHeight / 2;
+                        textY = centerY - lineHeight / 2;
                         break;
                     case ICON_ONLY, NONE:
                         break;
                 }
                 break;
         }
-
-        int textColor = ARGB.color(255, 0xFF, 0x13, 0x13); // full alpha + RGB
-
-        if (lockIconMode == LockIconMode.ICON_TEXT || lockIconMode == LockIconMode.ICON_ONLY) {
-            guiGraphics.blit(RenderPipelines.GUI_TEXTURED, ELYTRA_ICON, iconX, iconY, 0, 0, iconSize, iconSize, iconSize, iconSize);
-            guiGraphics.blit(RenderPipelines.GUI_TEXTURED, CROSS_ICON, iconX, iconY, 0, 0, iconSize, iconSize, iconSize, iconSize);
-        }
-        if (lockIconMode == LockIconMode.ICON_TEXT || lockIconMode == LockIconMode.TEXT_ONLY) {
-            guiGraphics.drawString(
-                    font,
-                    Component.translatable(disableText),
-                    textX,
-                    textY,
-                    textColor,
-                    false
-            );
-        }    }
+        return new Positions(iconX, iconY, textX, textY);
+    }
 }

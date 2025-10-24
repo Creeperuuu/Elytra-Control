@@ -1,5 +1,6 @@
 {
   "notification.elytracontrol.disable_elytra": "Disable Elytra",
+  "overlay.elytracontrol.disable_text": "Elytra Disabled",
 
   "config.screen.elytracontrol.title": "Elytra Control Config",
 
@@ -12,6 +13,21 @@
 
   "config.widget.elytracontrol.elytra_control_default": "Elytra Control Default",
   "config.widget.elytracontrol.elytra_control_default.description": "Should disable the default elytra control?",
+
+  "config.widget.elytracontrol.lock_icon_mode": "Lock Icon Mode",
+  "config.widget.elytracontrol.lock_icon_mode.icon_text": "Icon + Text",
+  "config.widget.elytracontrol.lock_icon_mode.icon_only": "Icon Only",
+  "config.widget.elytracontrol.lock_icon_mode.text_only": "Text Only",
+  "config.widget.elytracontrol.lock_icon_mode.none": "None",
+
+  "config.widget.elytracontrol.overlay_position": "Overlay Position",
+  "config.widget.elytracontrol.overlay_position.top_left": "Top Left",
+  "config.widget.elytracontrol.overlay_position.top_middle": "Top Middle",
+  "config.widget.elytracontrol.overlay_position.top_right": "Top Right",
+  "config.widget.elytracontrol.overlay_position.right_middle": "Right Middle",
+  "config.widget.elytracontrol.overlay_position.bottom_right": "Bottom Right",
+  "config.widget.elytracontrol.overlay_position.bottom_left": "Bottom Left",
+  "config.widget.elytracontrol.overlay_position.left_middle": "Left Middle",
 
   "key.category.elytracontrol.elytracontrol": "Elytra Control",
   "key.elytracontrol.disable_elytra": "Disable Elytra",
