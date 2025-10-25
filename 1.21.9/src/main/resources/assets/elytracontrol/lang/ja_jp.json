@@ -1,0 +1,45 @@
+{
+  "notification.elytracontrol.disable_elytra": "エリトラを無効化",
+  "overlay.elytracontrol.disable_text": "エリトラ無効",
+
+  "config.screen.elytracontrol.title": "エリトラコントロール設定",
+
+  "config.widget.elytracontrol.debug_mode": "デバッグモード",
+
+  "config.widget.elytracontrol.disable_elytra": "エリトラを無効化",
+  "config.widget.elytracontrol.disable_elytra.description": "有効にすると、エリトラで飛行を開始できなくなります。",
+  "config.widget.elytracontrol.disable_elytra_notification": "エリトラ無効化通知",
+  "config.widget.elytracontrol.disable_elytra_notification.description": "有効にすると、エリトラを無効/有効にしたときに通知が表示されます。",
+
+  "config.widget.elytracontrol.elytra_control_allow_default_key": "エリトラコントロールのデフォルトキーを許可",
+  "config.widget.elytracontrol.elytra_control_allow_default_key.description":"有効にすると、デフォルトのジャンプキーでエリトラの飛行が停止します。",
+
+  "config.widget.elytracontrol.upward_velocity": "上昇速度",
+  "config.widget.elytracontrol.upward_velocity.description": "イージーフライ使用時に適用される初期上昇速度。マルチプレイヤーで便利です。イージーフライがすぐに失敗する場合は、より高い値を使用してください。",
+
+  "config.widget.elytracontrol.easy_fly": "イージーフライ",
+  "config.widget.elytracontrol.easy_fly.description": "有効にすると、割り当てられたキーを押すことで、エリトラと花火ロケットで簡単に飛行を開始できます。",
+  "config.widget.elytracontrol.easy_fly_allow_default_key": "イージーフライのデフォルトキーを許可",
+  "config.widget.elytracontrol.easy_fly_allow_default_key.description": "有効にすると、デフォルトの使用キーでイージーフライがトリガーされます。",
+
+  "config.widget.elytracontrol.lock_icon_mode": "ロックアイコンモード",
+  "config.widget.elytracontrol.lock_icon_mode.icon_text": "アイコン+テキスト",
+  "config.widget.elytracontrol.lock_icon_mode.icon_only": "アイコンのみ",
+  "config.widget.elytracontrol.lock_icon_mode.text_only": "テキストのみ",
+  "config.widget.elytracontrol.lock_icon_mode.none": "なし",
+
+  "config.widget.elytracontrol.overlay_position": "オーバーレイの位置",
+  "config.widget.elytracontrol.overlay_position.top_left": "左上",
+  "config.widget.elytracontrol.overlay_position.top_middle": "上部中央",
+  "config.widget.elytracontrol.overlay_position.top_right": "右上",
+  "config.widget.elytracontrol.overlay_position.right_middle": "右中央",
+  "config.widget.elytracontrol.overlay_position.bottom_right": "右下",
+  "config.widget.elytracontrol.overlay_position.bottom_left": "左下",
+  "config.widget.elytracontrol.overlay_position.left_middle": "左中央",
+
+  "key.category.elytracontrol.elytracontrol": "エリトラコントロール",
+  "key.elytracontrol.disable_elytra": "エリトラを無効化",
+  "key.elytracontrol.start_flying": "飛行開始",
+  "key.elytracontrol.stop_flying": "飛行停止",
+  "key.elytracontrol.easy_fly": "イージーフライ"
+}
