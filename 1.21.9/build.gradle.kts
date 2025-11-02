@@ -6,6 +6,12 @@ val fabricVersion: String by project
 val modmenuVersion: String by project
 val smoothiezApiVersion: String by project
 
+loom {
+    mixin {
+        defaultRefmapName = "elytracontrol-refmap.json"
+    }
+}
+
 repositories {
     mavenLocal()
     maven {

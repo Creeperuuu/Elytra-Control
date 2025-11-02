@@ -1,4 +1,4 @@
-package io.github.smootheez.elytracontrol.mixin.client;
+package io.github.smootheez.elytracontrol.mixin;
 
 import io.github.smootheez.elytracontrol.config.*;
 import io.github.smootheez.elytracontrol.util.*;
