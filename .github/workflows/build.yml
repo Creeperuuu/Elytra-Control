@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout Elytra Control
         uses: actions/checkout@v4
 
       - name: Set up Java 21
@@ -18,11 +18,21 @@ jobs:
         with:
           distribution: temurin
           java-version: '21'
+          cache: gradle
+
+      - name: Clone Smoothiez API
+        run: git clone --depth 1 https://github.com/Smootheez/Smoothiez-Api.git smoothiez-api
+
+      - name: Build and publish Smoothiez API to Maven Local
+        working-directory: smoothiez-api
+        run: |
+          chmod +x gradlew
+          ./gradlew :1.21.9:publishToMavenLocal
 
       - name: Make Gradle wrapper executable
         run: chmod +x gradlew
 
-      - name: Build
+      - name: Build Elytra Control
         run: ./gradlew build
 
       - name: Upload build artifacts
@@ -32,4 +42,4 @@ jobs:
           path: |
             build/libs/*.jar
             1.21.9/build/libs/*.jar
-          if-no-files-found: warn
+          if-no-files-found: error
