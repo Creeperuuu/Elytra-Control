@@ -8,7 +8,7 @@ repositories {
 }
 
 dependencies {
-    implementation("net.fabricmc:fabric-loom:1.11-SNAPSHOT")
+    implementation("net.fabricmc:fabric-loom:1.14.8")
 }
 
 gradlePlugin {
