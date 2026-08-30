@@ -28,28 +28,29 @@ jobs:
         run: |
           chmod +x gradlew
 
-          # Elytra Control depends on Smoothiez API 0.1.0+1.21.9.
-          # The current Smoothiez API source is 0.1.2, so pin the cloned
-          # dependency's module version to the version Elytra Control requests.
+          # Elytra Control requests Smoothiez API 0.1.0+1.21.9.
           sed -i 's/^modVersion = .*/modVersion = 0.1.0/' 1.21.9/gradle.properties
 
-          # The publishing plugin is not available in the public plugin
-          # repositories. It is only needed for Modrinth/CurseForge uploads,
-          # not for producing the Maven publication consumed by Elytra Control.
+          # The publishing plugin is not required to create the Maven
+          # publication and is not available in the public plugin repositories.
           sed -i '/^import io.github.smootheez.LoaderType/d' 1.21.9/build.gradle.kts
           sed -i '/^import io.github.smootheez.curseforge.EnvironmentType/d' 1.21.9/build.gradle.kts
           sed -i '/id("io.github.smootheez.mc-mod-publisher")/d' 1.21.9/build.gradle.kts
           sed -i '/^val modReleaseType: String by project/,$d' 1.21.9/build.gradle.kts
 
+          # ModMenu is needed on the Java compile classpath by
+          # ModMenuApiImpl.java, but must not be bundled into Smoothiez API.
+          sed -i 's/modCompileOnly("com.terraformersmc:modmenu:${modmenuVersion}")/compileOnly("com.terraformersmc:modmenu:${modmenuVersion}")/' 1.21.9/build.gradle.kts
+
       - name: Build and publish Smoothiez API to Maven Local
         working-directory: smoothiez-api
-        run: ./gradlew :1.21.9:publishToMavenLocal
+        run: ./gradlew :1.21.9:publishToMavenLocal --no-daemon
 
       - name: Make Gradle wrapper executable
         run: chmod +x gradlew
 
       - name: Build Elytra Control
-        run: ./gradlew build
+        run: ./gradlew build --no-daemon
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
