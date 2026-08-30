@@ -31,16 +31,39 @@ jobs:
           # Elytra Control requests Smoothiez API 0.1.0+1.21.9.
           sed -i 's/^modVersion = .*/modVersion = 0.1.0/' 1.21.9/gradle.properties
 
-          # The publishing plugin is not required to create the Maven
-          # publication and is not available in the public plugin repositories.
-          sed -i '/^import io.github.smootheez.LoaderType/d' 1.21.9/build.gradle.kts
-          sed -i '/^import io.github.smootheez.curseforge.EnvironmentType/d' 1.21.9/build.gradle.kts
+          # Remove only the unavailable publisher plugin and its imports.
+          sed -i '/^import io.github.smootheez.LoaderType$/d' 1.21.9/build.gradle.kts
+          sed -i '/^import io.github.smootheez.curseforge.EnvironmentType$/d' 1.21.9/build.gradle.kts
           sed -i '/id("io.github.smootheez.mc-mod-publisher")/d' 1.21.9/build.gradle.kts
-          sed -i '/^val modReleaseType: String by project/,$d' 1.21.9/build.gradle.kts
 
-          # ModMenu is needed on the Java compile classpath by
-          # ModMenuApiImpl.java, but must not be bundled into Smoothiez API.
-          sed -i 's/modCompileOnly("com.terraformersmc:modmenu:${modmenuVersion}")/compileOnly("com.terraformersmc:modmenu:${modmenuVersion}")/' 1.21.9/build.gradle.kts
+          # Remove publisher-only property declarations, but preserve the
+          # repositories and dependencies sections required for compilation.
+          sed -i '/^val modReleaseType: String by project$/d' 1.21.9/build.gradle.kts
+          sed -i '/^val modrinthId: String by project$/d' 1.21.9/build.gradle.kts
+          sed -i '/^val curseforgeId: String by project$/d' 1.21.9/build.gradle.kts
+
+          # Remove only the mcModPublisher block if present.
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path("1.21.9/build.gradle.kts")
+          s = p.read_text()
+          start = s.find("\nmcModPublisher {")
+          if start != -1:
+              depth = 0
+              i = s.find("{", start)
+              end = None
+              for j in range(i, len(s)):
+                  if s[j] == "{":
+                      depth += 1
+                  elif s[j] == "}":
+                      depth -= 1
+                      if depth == 0:
+                          end = j + 1
+                          break
+              if end is not None:
+                  s = s[:start] + s[end:]
+          p.write_text(s)
+          PY
 
       - name: Build and publish Smoothiez API to Maven Local
         working-directory: smoothiez-api
