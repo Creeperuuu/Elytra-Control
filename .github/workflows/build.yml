@@ -23,21 +23,28 @@ jobs:
       - name: Clone Smoothiez API
         run: git clone --depth 1 https://github.com/Smootheez/Smoothiez-Api.git smoothiez-api
 
-      - name: Build and publish Smoothiez API to Maven Local
+      - name: Prepare Smoothiez API for local build
         working-directory: smoothiez-api
         run: |
           chmod +x gradlew
 
-          # Smoothiez API's 1.21.9 module uses a private/unavailable
-          # mc-mod-publisher SNAPSHOT plugin. We only need the Maven
-          # publication for Elytra Control, so remove that publishing
-          # configuration from the cloned dependency.
+          # Elytra Control depends on Smoothiez API 0.1.0+1.21.9.
+          # The current Smoothiez API source is 0.1.2, so pin the cloned
+          # dependency's module version to the version Elytra Control requests.
+          sed -i 's/^modVersion = .*/modVersion = 0.1.0/' 1.21.9/gradle.properties
+
+          # The publishing plugin is not available in the public plugin
+          # repositories. It is only needed for Modrinth/CurseForge uploads,
+          # not for producing the Maven publication consumed by Elytra Control.
           sed -i '/^import io.github.smootheez.LoaderType/d' 1.21.9/build.gradle.kts
           sed -i '/^import io.github.smootheez.curseforge.EnvironmentType/d' 1.21.9/build.gradle.kts
           sed -i '/id("io.github.smootheez.mc-mod-publisher")/d' 1.21.9/build.gradle.kts
-          sed -i '/^val modMinecraftVersion/,$d' 1.21.9/build.gradle.kts
+          sed -i '/^val modReleaseType: String by project/,$d' 1.21.9/build.gradle.kts
 
-          ./gradlew :1.21.9:publishToMavenLocal
+      - name: Build and publish Smoothiez API to Maven Local
+        working-directory: smoothiez-api
+        run: ./gradlew :1.21.9:publishToMavenLocal
+
       - name: Make Gradle wrapper executable
         run: chmod +x gradlew
 
