@@ -40,6 +40,6 @@
   "key.category.elytracontrol.elytracontrol": "Elytra Control",
   "key.elytracontrol.disable_elytra": "Disable Elytra",
   "key.elytracontrol.start_flying": "Start Flying",
-  "key.elytracontrol.stop_flying": "Stop Flying",
+  "key.elytracontrol.stop_flying": "Toggle Elytra / Chestplate",
   "key.elytracontrol.easy_fly": "Easy Fly"
 }
