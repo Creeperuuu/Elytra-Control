@@ -27,8 +27,17 @@ jobs:
         working-directory: smoothiez-api
         run: |
           chmod +x gradlew
-          ./gradlew :1.21.9:publishToMavenLocal
 
+          # Smoothiez API's 1.21.9 module uses a private/unavailable
+          # mc-mod-publisher SNAPSHOT plugin. We only need the Maven
+          # publication for Elytra Control, so remove that publishing
+          # configuration from the cloned dependency.
+          sed -i '/^import io.github.smootheez.LoaderType/d' 1.21.9/build.gradle.kts
+          sed -i '/^import io.github.smootheez.curseforge.EnvironmentType/d' 1.21.9/build.gradle.kts
+          sed -i '/id("io.github.smootheez.mc-mod-publisher")/d' 1.21.9/build.gradle.kts
+          sed -i '/^val modMinecraftVersion/,$d' 1.21.9/build.gradle.kts
+
+          ./gradlew :1.21.9:publishToMavenLocal
       - name: Make Gradle wrapper executable
         run: chmod +x gradlew
 
