@@ -31,6 +31,11 @@ jobs:
           # Elytra Control requests Smoothiez API 0.1.0+1.21.9.
           sed -i 's/^modVersion = .*/modVersion = 0.1.0/' 1.21.9/gradle.properties
 
+          # Build Smoothiez API with the same Loom version used by Elytra Control.
+          # Otherwise Loom 1.11.8 rejects the dependency as being built with
+          # the newer Loom 1.14.x.
+          sed -i 's/^loomVersion = .*/loomVersion = 1.11.8/' gradle.properties
+
           # Remove only the unavailable publisher plugin and its imports.
           sed -i '/^import io.github.smootheez.LoaderType$/d' 1.21.9/build.gradle.kts
           sed -i '/^import io.github.smootheez.curseforge.EnvironmentType$/d' 1.21.9/build.gradle.kts
@@ -70,6 +75,9 @@ jobs:
         run: ./gradlew :1.21.9:publishToMavenLocal --no-daemon
 
       - name: Make Gradle wrapper executable
+        run: chmod +x gradlew
+
+      - name: Make Gradle wrapper executable for Elytra Control
         run: chmod +x gradlew
 
       - name: Build Elytra Control
